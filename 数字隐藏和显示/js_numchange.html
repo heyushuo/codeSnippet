@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		span{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.text_align{
+			text-align: center;
+			font-size: 18px;
+		}
+		.bg,.bg2{
+			width: 20px;
+			height: 20px;
+			margin-left: 10px;
+		}
+		.bg{
+			background-color: red;
+		}
+		.bg2{
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="text_align"> 
+		<span>总额是</span><span id="tel">111</span><span>元</span><span class="bg"></span>
+	</div>
+	<script src="../js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		var secret = $("#tel").html();
+//		function change(){
+//			open = secret.replace(/^[0-9]+(.[0-9]{1,2})?$/, "****");
+//		}
+		$(".bg").click(function(){
+			if($(this).hasClass('bg')){
+				$(this).removeClass('bg').addClass('bg2');
+				$("#tel").html("****");
+			}else{
+				$(this).removeClass('bg2').addClass('bg');
+				$("#tel").html(secret);
+			}
+		})
+	</script>
+</body>
+</html>

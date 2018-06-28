@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="minirefresh.min.css"/>
+		<style type="text/css">
+			.minirefresh-theme-default .minirefresh-upwrap{
+				display: none;
+			}
+			.minirefresh-theme-default .downwrap-content{
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- minirefresh开头的class请勿修改 -->
+		<div id="minirefresh" class="minirefresh-wrap">
+		    <div class="minirefresh-scroll" >
+				<div id="content">
+					<p>奥斯卡减肥的经适房</p><p>奥斯卡减肥的经适房</p>
+					<p>奥斯卡减肥的经适房</p>
+					<p>奥斯卡减肥的经适房</p>
+					<p>奥斯卡减肥的经适房</p>
+					<p>奥斯卡减肥的经适房</p>
+				</div>
+		    </div>
+		</div>
+
+	</body>
+	<script src="../jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="minirefresh.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		// 引入任何一个主题后，都会有一个 MiniRefresh 全局变量
+		var miniRefresh = new MiniRefresh({
+		    container: '#minirefresh',
+		    down: {
+		    	offset:40,
+		    	dampRateBegin:0.2,
+		    	dampRate:0.1,
+		        callback: function() {
+		        	console.log("下拉刷新")
+		            // 下拉事件
+					$("#content").append("<p>我是下来加载的数据</p>")
+		            miniRefresh.endDownLoading();
+		        }
+		    },
+		    up: {
+				isLock:true,
+		        callback: function() {
+		            console.log('heyushuo')
+		            // 注意，由于默认情况是开启满屏自动加载的，所以请求失败时，请务必endUpLoading(true)，防止无限请求
+		            miniRefresh.endUpLoading(true);
+		        }
+		    }
+		});
+	</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//解决移动端获取焦点键盘挡住输入框问题
+	this.bind(this.texttarea,"focus",function(){
+		console.log(document.body.scrollHeight);
+		_this.timer=setInterval(function(){
+			document.body.scrollTop=document.body.scrollHeight;
+		},100);
+	})
+	
+	this.bind(this.texttarea,"blur",function(){
+		clearInterval(_this.timer);
+		_this.app.scrollTop=_this.app.scrollHeight;
+		console.log(_this.scrollTop);
+	})
+</script>

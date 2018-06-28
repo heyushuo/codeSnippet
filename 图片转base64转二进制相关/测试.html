@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="tab">
+			<form id="form2" method="post">
+				<div class="picSearch">
+					<label>信息搜索</label>
+					<div style="margin:0.2rem 0">
+						<div class="serh">
+							<span>姓 &nbsp; &nbsp;名 : </span><input type="text" name="imgname" id="imgname" placeholder="请输入姓名" />
+						</div>
+						<div class="serh">
+							<span>证件号 : </span><input type="text" name="imgcard" id="imgcard" placeholder="证件号" />
+						</div>
+						<div class="serh">
+							<span>证件类型 : </span><select name="imgtype">
+								<option value="1">身份证</option>
+								<option value="2">护照</option>
+								<option value="3">其他</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</form>
+			<div style="text-align:center;margin-bottom: 0.1rem;">
+				<input type="button" id="btn2" value="点击查询"   />
+			</div>
+			</div>
+	</body>
+</html>
+<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	//信息搜索      http://10.24.102.36/api/search_info/format/json
+$("#btn2").click(function(){
+	var form2=$("#form2");
+	var imgname=$.trim($("#imgname").val());
+	var imgcard=$.trim($("#imgcard").val());
+	var idCardReg=/^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/;//身份证验证
+	if(imgname==""&&imgcard==""){
+		alert("请填写任意一项")
+		return false;
+	}
+	   if(imgcard!=""){
+		   if(!idCardReg.test(idCard)){
+		   	 	alert('请填写正确的身份证');
+			   	return false;
+		   	 }
+	   } 
+	   $.ajax({
+		   	type:"post",
+		   	url:"https://api.douban.com/v2/movie/top250?start=6&count=10",
+		   	type:'post', 
+			dataType:'json',
+			beforeSend:function(){
+  	      		var index = layer.load(2,{});
+  	      		$("#btn2").attr("disabled",true);
+  	      	  },
+  	      	 complete:function(){
+  	      		layer.close(index);
+  	      		$("#btn2").removeAttr("disabled");
+  	      	  },
+			success:function(data) {
+				console.log(data)
+			  if(data.success){
+			  	var list=data.list;
+			  	var tabHtml="";
+			  	console.log(data)
+			  	for(var i=0;i<list.length;i++){
+			  		var item=list[i];
+			  		tabHtml+='<div class="clearfix content"><div class="resultL pull-left">'+
+								'<img src="http://119.90.53.231/'+item.imgurl+'"/>'+
+							'</div>'+
+							'<div class="resultR pull-left">'+
+								'<p><span>身份证号:</span><span>'+item.imgcard+'</span></p>'+
+								'<p><span>姓名:</span><span>'+item.imgname+'</span></p>'+
+								'<p><span>相似度:</span><span>'+item.score+'</span></p>'+
+							'</div></div>';
+			  	}
+			  }
+			  $("#result").html(tabHtml);
+			},
+			error:function(){
+				alert('error');
+				layer.close(index);
+  	      		$("#btn2").removeAttr("disabled");
+			}
+	   });
+//	var options = {    
+//			url:'http://10.24.102.36/api/search_info/format/json',   
+//			type:'post', 
+//			dataType:'json',
+//			jsonp:'callback',
+//			success:function(data) {
+//				console.log(data)
+//			  if(data.success){
+//			  	var list=data.list;
+//			  	var tabHtml="";
+//			  	console.log(data)
+//			  	for(var i=0;i<list.length;i++){
+//			  		var item=list[i];
+//			  		tabHtml+='<div class="clearfix content"><div class="resultL pull-left">'+
+//								'<img src="http://119.90.53.231/'+item.imgurl+'"/>'+
+//							'</div>'+
+//							'<div class="resultR pull-left">'+
+//								'<p><span>身份证号:</span><span>'+item.imgcard+'</span></p>'+
+//								'<p><span>姓名:</span><span>'+item.imgname+'</span></p>'+
+//								'<p><span>相似度:</span><span>'+item.score+'</span></p>'+
+//							'</div></div>';
+//			  	}
+//			  }
+//			  $("#result").html(tabHtml);
+//			  $("#btn2").removeAttr("disabled");
+//			},
+//			error:function(){
+//				alert('发送失败');
+//				$("#btn2").removeAttr("disabled");
+//			}
+//		};  
+//		
+//		form2.ajaxSubmit(options);
+})
+</script>

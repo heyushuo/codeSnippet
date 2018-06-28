@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>支持移动端复制粘贴计数、限制等</title>
+    <style>
+        body{font-family:PingFangSC-Regular;background-color:#ffffff;width:100%;max-width:640px;margin:auto;-webkit-text-size-adjust:none;}
+        html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+        a,button,input,textarea,li{text-decoration:none;-webkit-tap-highlight-color:rgba(255,255,255,0);color:#999999;}
+        li{list-style-type:none;}
+        ul{padding:0;margin:0;}
+        .container{width:90%;margin:auto;}
+        .container_text{border:1px solid #BABABA;border-radius:4px;position:relative;padding:10px 12px;}
+        .wordCount{position:relative;}
+        .word{font-style:normal;}
+        .font{margin-right:.6rem;font-size:0.75rem;color:#999999;letter-spacing:-0.29px;position:absolute;right:0;bottom:0;}
+        textarea{border:none;outline:none;width:100%;resize:none;-webkit-appearance:none;color:#333333;padding:0;font-size:0.875rem;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="container_text wordCount" id="wordCount">
+            <textarea rows="9" id="dating_textarea" name="content" placeholder="请输入您的问题内容，72小时内无人回答，将按原支付路径全额退款。" maxlength="500"></textarea>
+            <span class="font"><var class="word">0</var>/20</span>
+        </div>
+    </div>
+</body>
+<script src="jquery-2.1.1.min.js"></script>
+</html>
+<script>
+    // Max word
+    $(function(){
+        var wordCount = $("#wordCount"),
+        textArea = wordCount.find("textarea"),
+        word = wordCount.find(".word");
+        //调用
+        statInputNum(textArea,word);
+    });
+    function statInputNum(textArea,numItem) {
+        var max = numItem.text(),
+        curLength;
+        textArea[0].setAttribute("maxlength",20);
+        curLength = textArea.val().length;
+        numItem.text(curLength);
+        textArea.on('input propertychange', function () {
+            var _value = $(this).val().replace(/\n/gi,"");
+            numItem.text(_value.length);
+            if(Number(_value.length)>=20) {
+                console.log(_value.length);
+            }
+        });
+    }
+    // var wordCount = $("#wordCount"),
+    // textArea = wordCount.find("textarea"),
+    // word = wordCount.find(".S_font");
+    // statInputNum(textArea, word);
+
+    // function statInputNum(textArea, numItem) {
+    //  var max = numItem.text(),
+    //  curLength;
+    //  textArea[0].setAttribute("maxlength", max);
+    //  curLength = textArea.val().length;
+    //  numItem.text(max - curLength);
+    //  textArea.on('input propertychange', function() {
+    //      var _value = $(this).val().replace(/\n/gi, "");
+    //      numItem.text(max - _value.length);
+    //  });
+    // }
+</script>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+body{
+    background:#CCC;
+}
+a{
+    display:block;
+    width:100px;
+    padding:5px 10px;
+    float:left;
+    background:#666;
+    text-align:center;
+    color : #FFF;
+    border : solid 3px #333;
+    margin: 1px;
+}
+</style>
+<div>
+  <a href="javascript:;">连接一</a>
+  <a href="javascript:;">连接二</a>
+  <a href="javascript:;">连接三</a>
+  <a href="javascript:;">连接四</a>
+  <a href="javascript:;">连接五</a>
+  <a href="javascript:;">连接六</a>
+  <a href="javascript:;">连接七</a>
+  <a href="javascript:;">连接八</a>
+  <a href="javascript:;">连接九</a>
+</div>
+<script>
+Element.prototype.siblings = function(callback){
+	console.log(this.parentNode )
+    var siblingElement = [];
+    var parentAllElement = [];
+    if( ! this.parentNode ){
+        return siblingElement;
+    };
+    parentAllElement = this.parentNode.getElementsByTagName(this.tagName);
+    for( var i = 0; i < parentAllElement.length ; i++ ){
+        if( parentAllElement[i] != this ){
+            siblingElement.push(parentAllElement[i]);
+            typeof callback == "function" && callback.call(parentAllElement[i]);
+        }
+    }
+    delete parentAllElement;
+    return siblingElement;
+};
+
+var link = document.getElementsByTagName("a");
+for (var i = 0; i < link.length; i++) {
+    link[i].addEventListener("click", function() {
+        this.style.backgroundColor = "#C00";
+        this.style.borderColor = "#FF0";
+        
+        //用法1：callback方式；改变背景为蓝色
+        this.siblings(function(){
+            this.style.backgroundColor = "#009";
+        });
+        
+        //用法2：返回列表；改变边框为绿色
+        this.siblings().forEach(function(sibling){
+            sibling.style.borderColor = "#090";
+        });
+    })
+}
+</script>

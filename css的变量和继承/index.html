@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css的变量和继承</title>
+		<style type="text/css">
+			.box{
+				width: 28px;
+				height: 29px;
+				display: inline-block;
+				background: url(fangzi.png) no-repeat;
+				background-color: currentColor;
+			}
+			.link1:hover{
+				color: red;
+			}
+			
+			
+			.icon {
+    display: inline-block;
+    width: 16px; height: 20px;
+    background-image: url(http://sandbox.runjs.cn/uploads/rs/216/0y89gzo2/sprite_icons.png );
+    background-color: currentColor; /* 该颜色控制图标的颜色 */
+}
+.link:hover { color: red; }/* 虽然改变的是文字颜色，但是图标颜色也一起变化了 */
+		</style>
+	</head>
+	<body>
+		<div class="box link1">
+			
+		</div>
+		<div class="icon link">
+			
+		</div>
+	</body>
+</html>

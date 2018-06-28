@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="pager.css"/>
+		<script src="pager.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<table id="table" border="" cellspacing="" cellpadding="">
+			
+			<!--<tr><td>Data</td><td>Data</td><td>Data</td></tr>-->
+		</table>
+		<div id="pagerBox">
+			
+		</div>
+	</body>
+</html>
+<script src="../js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var pager = new Pager({
+                index: 1,//当前页号
+                total: 4,//总共有多少页
+                parent: pagerBox,//插入内容要放入的地方
+                onchange: doChangePage//页数改变时,要进行的回调函数
+            });
+    var tabHtml="<tr><th>状态</th><th>姓名</th><th>时间</th></tr>";
+    $("#table").append(tabHtml);
+    function doChangePage(){
+    	var str="";
+    	$.ajax({
+    		type:"get",
+    		url:"data.json",
+    		datatype:'json',
+    		success:function(data){
+    			console.log(data);
+    			for(var i=0;i<data.list.length;i++){
+    				str+="<tr><td>"+data.list[i].status+"</td><td>"+data.list[i].promoterUserId+"</td><td>"+data.list[i].startTime+"</td></tr>"
+    			}
+    			$("#table").html(str);
+    		}
+    	});
+    }
+</script>

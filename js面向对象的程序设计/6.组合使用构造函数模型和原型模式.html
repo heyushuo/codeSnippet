@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				font-size: 0.12rem !important;
+			}
+		</style>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+//	组合形式的模式，构造函数模式用于定义实例属性，而原型模式用于定义方法和共享的属性
+
+// 声明构造函数
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+// 通过prototye属性，将方法挂载到原型对象上
+Person.prototype.getName = function() {
+    return this.name;
+}
+
+var p1 = new Person('tim', 10);
+var p2 = new Person('jak', 22);
+console.log(p1)
+console.log(p2)
+console.log(p1.getName)
+console.log(p1.getName === p2.getName); // true
+</script>

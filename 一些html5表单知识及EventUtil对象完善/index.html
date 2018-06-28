@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" value="123123123"    />
+	</body>
+</html>
+<script type="text/javascript">
+	3、选择部分文本
+
+为了兼容性，我们也封装了一个函数。用到了setSelectionRange（）；函数如下：
+
+//选择部分文本
+function selectText(textbox,startIndex,stopIndex){
+    if(textbox.setSelectionRange){
+        textbox.setSelectionRange(startIndex,stopIndex);
+
+    }else if(textbox.createTextRange){
+        var range=textbox.createTextRange();
+        range.collapse(true);
+        range.moveStart("character",startIndex);
+        range.moveEnd("character",stopIndex-startIndex);
+        range.select();
+    }
+    textbox.focus();
+}
+
+
+
+textbox.value="hello haorooms";
+//选择所有文本
+selectText(textbox,0,textbox.value.length); //hello haorooms
+//选择前3个字符
+selectText(textbox,0,3);//hel
+//选择4-7个字符
+selectText(textbox,4,7);//o h
+
+
+
+6、html5约束验证API
+
+假如我们要必填字段，可以如下写：
+
+<input type="text" name="username" required > <!--必填字段 -->
+html5增加了pattern属性，可以做正则验证，例如只输入数字
+
+<input type="text" pattern="\d+" name="count" >
+</script>

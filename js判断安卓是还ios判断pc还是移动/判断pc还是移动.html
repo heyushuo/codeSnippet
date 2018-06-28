@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+		function IsPC() {
+		    var userAgentInfo = navigator.userAgent;
+		    var Agents = ["Android", "iPhone",
+		                "SymbianOS", "Windows Phone",
+		                "iPad", "iPod"];
+		    var flag = true;
+		    for (var v = 0; v < Agents.length; v++) {
+		        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+		            flag = false;
+		            break;
+		        }
+		    }
+		    return flag;
+		}
+		
+		alert(IsPC())
+		if(IsPC()){
+			alert("pc端")
+		}else{
+			alert("手机")
+		}
+</script>
+<script type="text/javascript">
+	;(function() {
+		var isPc = function() {
+		var userAgentInfo = navigator.userAgent;
+		var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+		var flag = true;
+		for (var v=0;v<Agents.length;v++) {
+			if (userAgentInfo.indexOf(Agents[v]) > 0) {
+				flag = false;
+				break;
+			}
+		}
+		return flag;
+		}
+		if (!isPc() && window.location.href.indexOf('towap=0') < 0) {
+		var url = window.location.href;
+		url = 'mob.html';
+		window.location.href = url;
+		}else{
+		        window.location.href="pc.html";
+		}
+	})();
+</script>

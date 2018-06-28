@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+一、h5网站input 设置为type=number的问题
+h5网页input 的type设置为number一般会产生三个问题，一个问题是maxlength属性不好用了。另外一个是form提交的时候，默认给取整了。三是部分安卓手机出现样式问题。
+
+问题一解决，我目前用的是js。如下
+
+onpropertychange属性可在某些情况下解决上面存在的问题，
+不用考虑是否失去焦点，不管js操作还是键盘鼠标手动操作，
+只要HTML元素属性发生改变即可立即捕获到。遗憾的是，onpropertychange为IE专属的。
+其他浏览器下如果想要实现这一实时监听的需求，就要用到HTML5中的标准事件oninput，
+不过IE9以下的浏览器是不支持oninput事件的。
+
+<input type="number"  oninput="checkTextLength(this ,10)"> 
+
+function checkTextLength(obj, length) {   
+           if(obj.value.length > length)   {          
+               obj.value = obj.value.substr(0, length);   
+           }    
+}
+二、ios 设置input 按钮样式会被默认样式覆盖
+解决方式如下：
+
+input,
+textarea {
+    border: 0; 
+    -webkit-appearance: none; 
+}
+
+三、IOS键盘字母输入，默认首字母大写
+解决方案，设置如下属性
+
+<input type="text" autocapitalize="off" />
+
+四、select 下拉选择设置右对齐
+设置如下：
+
+select option {
+direction: rtl;
+}
+
+五、通过transform进行skew变形，rotate旋转会造成出现锯齿现象
+可以设置如下：
+
+ -webkit-transform: rotate(-4deg) skew(10deg) translateZ(0);
+    transform: rotate(-4deg) skew(10deg) translateZ(0);
+    outline: 1px solid rgba(255,255,255,0)
+    
+六、移动端点击300ms延迟
+300ms尚可接受，不过因为300ms产生的问题，我们必须要解决。300ms导致用户体验并不是很好，解决这个问题，我们一般在移动端用tap事件来取代click事件。
+
+推荐两个js，一个是fastclick，一个是tap.js
+
+十一、移动端 HTML5 audio autoplay 失效问题
+这个不是 BUG，由于自动播放网页中的音频或视频，会给用户带来一些困扰或者不必要的流量消耗，所以苹果系统和安卓系统通常都会禁止自动播放和使用 JS 的触发播放，必须由用户来触发才可以播放。
+
+解决方法思路：先通过用户 touchstart 触碰，触发播放并暂停（音频开始加载，后面用 JS 再操作就没问题了）。
+
+解决代码：
+
+document.addEventListener('touchstart', function () {
+    document.getElementsByTagName('audio')[0].play();
+    document.getElementsByTagName('audio')[0].pause();
+});
+
+
+刷新回顶部
+当我们做了可视区域加载的时候，通常让其刷新回到顶部。像淘宝那样。刷新回顶部。
+
+我不知道淘宝网是如何做的。刷新回顶部，我用到的是onbeforeunload 事件。
+
+关于onbeforeunload 事件，http://www.haorooms.com/post/js_close_llq ，这里我也有篇文章专门介绍。大家可以看下。刷新回顶部就是用这个事件，可以这么写。
+
+window.onbeforeunload   =   function(){$(window).scrollTop(0);}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="head">
+			我是头部
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	function isIphoneX() {
+        return /iphone/gi.test(navigator.userAgent) && (screen.height == 812 && screen.width == 375)
+    }
+
+    if (isIphoneX()) {
+        $('.header').css('top', '3rem');
+    }
+</script>

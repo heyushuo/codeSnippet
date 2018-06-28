@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+	* {
+		list-style: none;
+		vertical-align: baseline;
+		font-weight: inherit; 
+		font-family: inherit; 
+		font-style: inherit;
+		font-size: 100%;
+		outline: 0;
+		padding: 0;
+		margin: 0;
+		border: 0;
+                height:100%;
+	}
+
+	html, body {
+		width: 100%;
+		height: 100%;
+	}
+
+	.main {
+		width: 100%;
+		height: 100%;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: flex;	/*开启容器的flex布局*/
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-moz-box-orient: vertical;
+		-moz-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;	/*纵向布局*/
+	}
+
+	header, footer {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-moz-box-orient: horizontal;
+		-moz-box-direction: normal;
+		-ms-flex-direction: row;
+		flex-direction: row;	/*横向布局，这个一般不用设置，是默认值*/
+		/*以下两条实现内容的水平垂直居中*/
+		-webkit-box-align: center;
+		-moz-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		-moz-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		height: 60px;
+		background-color: #f8f8f8;
+	}
+
+	header {
+		border-bottom: solid 1px #e6e6e6;
+	}
+
+	footer {
+		border-top: solid 1px #e6e6e6;
+	}
+
+	section {
+		-webkit-box-flex: 1;
+		-moz-box-flex: 1;
+		-ms-flex: 1;
+		flex: 1;	/*占满容器的剩余空间*/
+		overflow: hidden;
+	}
+
+	ul {
+		height: 100%;
+		overflow-y: auto;
+               -webkit-overflow-scrolling: touch;
+	}
+
+	li {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: flex;
+		height: 12.5%;
+		margin: 0 10px;
+		padding: 0 5px;
+		-webkit-box-align: center;
+		-moz-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;	/*内容垂直居中*/
+		-webkit-box-pack: justify;
+		-moz-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;		/*内容分布在两边*/
+		border-bottom: solid 1px #e6e6e6;
+	}
+	input {
+		height: 55px;
+		border:1px solid #000;
+		width: 100%;
+		font-size: 25px;
+		color: #000;
+	}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<header>Header</header>
+		<section>
+			<ul>
+				<li><span>item 1</span><span>val 1</span></li>
+				<li><span>item 2</span><span>val 2</span></li>
+				<li><span>item 3</span><span>val 3</span></li>
+				<li><span>item 4</span><span>val 4</span></li>
+				<li><span>item 5</span><span>val 5</span></li>
+				<li><span>item 6</span><span>val 6</span></li>
+				<li><span>item 7</span><span>val 7</span></li>
+				<li><span>item 8</span><span>val 8</span></li>
+				<li><span>item 9</span><span>val 9</span></li>
+				<li><span>item 10</span><span>val 10</span></li>
+				<li><span>item 11</span><span>val 11</span></li>
+				<li><span>item 12</span><span>val 12</span></li>
+				<li><span>item 13</span><span>val 13</span></li>
+				<li><span>item 14</span><span>val 14</span></li>
+				<li><span>item 15</span><span>val 15</span></li>
+				<li><span>item 16</span><span>val 16</span></li>
+				<li><span>item 17</span><span>val 17</span></li>
+				<li><span>item 18</span><span>val 18</span></li>
+				<li><span>item 19</span><span>val 19</span></li>
+				<li><span>item 20</span><span>val 20</span></li>
+				<li><span>item 21</span><span>val 21</span></li>
+				<li><span>item 22</span><span>val 22</span></li>
+				<li><span>item 23</span><span>val 23</span></li>
+				<li><span>item 24</span><span>val 24</span></li>
+				<li><span>item 25</span><span>val 25</span></li>
+				<li><span>item 26</span><span>val 26</span></li>
+				<li><span>item 27</span><span>val 27</span></li>
+				<li><span>item 28</span><span>val 28</span></li>
+				<li><span>item 29</span><span>val 29</span></li>
+				<li><span>item 30</span><span>val 30</span></li>
+				<li><span>item 31</span><span>val 31</span></li>
+				<li><span>item 32</span><span>val 32</span></li>
+				<li><span>item 33</span><span>val 33</span></li>
+				<li><span>item 34</span><span>val 34</span></li>
+				<li><span>item 35</span><span>val 35</span></li>
+				<li><span>item 36</span><span>val 36</span></li>
+				<li><span>item 37</span><span>val 37</span></li>
+				<li><span>item 38</span><span>val 38</span></li>
+				<li><span>item 39</span><span>val 39</span></li>
+				<li><span>item 40</span><span>val 40</span></li>
+				<li><span>item 41</span><span>val 41</span></li>
+				<li><span>item 42</span><span>val 42</span></li>
+				<li><span>item 43</span><span>val 43</span></li>
+				<li><span>item 44</span><span>val 44</span></li>
+				<li><span>item 45</span><span>val 45</span></li>
+				<li><span>item 46</span><span>val 46</span></li>
+				<li><span>item 47</span><span>val 47</span></li>
+				<li><span>item 48</span><span>val 48</span></li>
+				<li><span>item 49</span><span>val 49</span></li>
+				<li><span>item 50</span><span>val 50</span></li>
+				<li><span>item 51</span><span>val 51</span></li>
+				<li><span>item 52</span><span>val 52</span></li>
+				<li><span>item 53</span><span>val 53</span></li>
+				<li><span>item 54</span><span>val 54</span></li>
+				<li><span>item 55</span><span>val 55</span></li>
+				<li><span>item 56</span><span>val 56</span></li>
+				<li><span>item 57</span><span>val 57</span></li>
+				<li><span>item 58</span><span>val 58</span></li>
+				<li><span>item 59</span><span>val 59</span></li>
+				<li><span>item 60</span><span>val 60</span></li>
+				<li><span>item 61</span><span>val 61</span></li>
+				<li><span>item 62</span><span>val 62</span></li>
+				<li><span>item 63</span><span>val 63</span></li>
+				<li><span>item 64</span><span>val 64</span></li>
+				<li><span>item 65</span><span>val 65</span></li>
+				<li><span>item 66</span><span>val 66</span></li>
+				<li><span>item 67</span><span>val 67</span></li>
+				<li><span>item 68</span><span>val 68</span></li>
+				<li><span>item 69</span><span>val 69</span></li>
+				<li><span>item 70</span><span>val 70</span></li>
+				<li><span>item 71</span><span>val 71</span></li>
+				<li><span>item 72</span><span>val 72</span></li>
+				<li><span>item 73</span><span>val 73</span></li>
+				<li><span>item 74</span><span>val 74</span></li>
+				<li><span>item 75</span><span>val 75</span></li>
+				<li><span>item 76</span><span>val 76</span></li>
+				<li><span>item 77</span><span>val 77</span></li>
+				<li><span>item 78</span><span>val 78</span></li>
+				<li><span>item 79</span><span>val 79</span></li>
+				<li><span>item 80</span><span>val 80</span></li>
+				<li><span>item 81</span><span>val 81</span></li>
+				<li><span>item 82</span><span>val 82</span></li>
+				<li><span>item 83</span><span>val 83</span></li>
+				<li><span>item 84</span><span>val 84</span></li>
+				<li><span>item 85</span><span>val 85</span></li>
+				<li><span>item 86</span><span>val 86</span></li>
+				<li><span>item 87</span><span>val 87</span></li>
+				<li><span>item 88</span><span>val 88</span></li>
+				<li><span>item 89</span><span>val 89</span></li>
+				<li><span>item 90</span><span>val 90</span></li>
+				<li><span>item 91</span><span>val 91</span></li>
+				<li><span>item 92</span><span>val 92</span></li>
+				<li><span>item 93</span><span>val 93</span></li>
+				<li><span>item 94</span><span>val 94</span></li>
+				<li><span>item 95</span><span>val 95</span></li>
+				<li><span>item 96</span><span>val 96</span></li>
+				<li><span>item 97</span><span>val 97</span></li>
+				<li><span>item 98</span><span>val 98</span></li>
+				<li><span>item 99</span><span>val 99</span></li>
+				<li><span>item 100</span><span>val 100</span></li>
+				<li><span>item 101</span><span>val 101</span></li>
+				<li><span>item 102</span><span>val 102</span></li>
+				<li><span>item 103</span><span>val 103</span></li>
+				<li><span>item 104</span><span>val 104</span></li>
+				<li><span>item 105</span><span>val 105</span></li>
+				<li><span>item 106</span><span>val 106</span></li>
+				<li><span>item 107</span><span>val 107</span></li>
+				<li><span>item 108</span><span>val 108</span></li>
+				<li><span>item 109</span><span>val 109</span></li>
+				<li><span>item 110</span><span>val 110</span></li>
+				<li><span>item 111</span><span>val 111</span></li>
+				<li><span>item 112</span><span>val 112</span></li>
+				<li><span>item 113</span><span>val 113</span></li>
+				<li><span>item 114</span><span>val 114</span></li>
+				<li><span>item 115</span><span>val 115</span></li>
+				<li><span>item 116</span><span>val 116</span></li>
+				<li><span>item 117</span><span>val 117</span></li>
+				<li><span>item 118</span><span>val 118</span></li>
+				<li><span>item 119</span><span>val 119</span></li>
+				<li><span>item 120</span><span>val 120</span></li>
+				<li><span>item 121</span><span>val 121</span></li>
+				<li><span>item 122</span><span>val 122</span></li>
+				<li><span>item 123</span><span>val 123</span></li>
+				<li><span>item 124</span><span>val 124</span></li>
+				<li><span>item 125</span><span>val 125</span></li>
+				<li><span>item 126</span><span>val 126</span></li>
+				<li><span>item 127</span><span>val 127</span></li>
+				<li><span>item 128</span><span>val 128</span></li>
+				<li><span>item 129</span><span>val 129</span></li>
+				<li><span>item 130</span><span>val 130</span></li>
+				<li><span>item 131</span><span>val 131</span></li>
+				<li><span>item 132</span><span>val 132</span></li>
+				<li><span>item 133</span><span>val 133</span></li>
+				<li><span>item 134</span><span>val 134</span></li>
+				<li><span>item 135</span><span>val 135</span></li>
+				<li><span>item 136</span><span>val 136</span></li>
+				<li><span>item 137</span><span>val 137</span></li>
+				<li><span>item 138</span><span>val 138</span></li>
+				<li><span>item 139</span><span>val 139</span></li>
+				<li><span>item 140</span><span>val 140</span></li>
+				<li><span>item 141</span><span>val 141</span></li>
+				<li><span>item 142</span><span>val 142</span></li>
+				<li><span>item 143</span><span>val 143</span></li>
+				<li><span>item 144</span><span>val 144</span></li>
+				<li><span>item 145</span><span>val 145</span></li>
+				<li><span>item 146</span><span>val 146</span></li>
+				<li><span>item 147</span><span>val 147</span></li>
+				<li><span>item 148</span><span>val 148</span></li>
+				<li><span>item 149</span><span>val 149</span></li>
+				<li><span>item 150</span><span>val 150</span></li>
+				<li><span>item 151</span><span>val 151</span></li>
+				<li><span>item 152</span><span>val 152</span></li>
+				<li><span>item 153</span><span>val 153</span></li>
+				<li><span>item 154</span><span>val 154</span></li>
+				<li><span>item 155</span><span>val 155</span></li>
+				<li><span>item 156</span><span>val 156</span></li>
+				<li><span>item 157</span><span>val 157</span></li>
+				<li><span>item 158</span><span>val 158</span></li>
+				<li><span>item 159</span><span>val 159</span></li>
+				<li><span>item 160</span><span>val 160</span></li>
+				<li><span>item 161</span><span>val 161</span></li>
+				<li><span>item 162</span><span>val 162</span></li>
+				<li><span>item 163</span><span>val 163</span></li>
+				<li><span>item 164</span><span>val 164</span></li>
+				<li><span>item 165</span><span>val 165</span></li>
+				<li><span>item 166</span><span>val 166</span></li>
+				<li><span>item 167</span><span>val 167</span></li>
+				<li><span>item 168</span><span>val 168</span></li>
+				<li><span>item 169</span><span>val 169</span></li>
+				<li><span>item 170</span><span>val 170</span></li>
+				<li><span>item 171</span><span>val 171</span></li>
+				<li><span>item 172</span><span>val 172</span></li>
+				<li><span>item 173</span><span>val 173</span></li>
+				<li><span>item 174</span><span>val 174</span></li>
+				<li><span>item 175</span><span>val 175</span></li>
+				<li><span>item 176</span><span>val 176</span></li>
+				<li><span>item 177</span><span>val 177</span></li>
+				<li><span>item 178</span><span>val 178</span></li>
+				<li><span>item 179</span><span>val 179</span></li>
+				<li><span>item 180</span><span>val 180</span></li>
+				<li><span>item 181</span><span>val 181</span></li>
+				<li><span>item 182</span><span>val 182</span></li>
+				<li><span>item 183</span><span>val 183</span></li>
+				<li><span>item 184</span><span>val 184</span></li>
+				<li><span>item 185</span><span>val 185</span></li>
+				<li><span>item 186</span><span>val 186</span></li>
+				<li><span>item 187</span><span>val 187</span></li>
+				<li><span>item 188</span><span>val 188</span></li>
+				<li><span>item 189</span><span>val 189</span></li>
+				<li><span>item 190</span><span>val 190</span></li>
+				<li><span>item 191</span><span>val 191</span></li>
+				<li><span>item 192</span><span>val 192</span></li>
+				<li><span>item 193</span><span>val 193</span></li>
+				<li><span>item 194</span><span>val 194</span></li>
+				<li><span>item 195</span><span>val 195</span></li>
+				<li><span>item 196</span><span>val 196</span></li>
+				<li><span>item 197</span><span>val 197</span></li>
+				<li><span>item 198</span><span>val 198</span></li>
+				<li><span>item 199</span><span>val 199</span></li>
+				<li><span>item 200</span><span>val 200</span></li>
+				<li><span>item 201</span><span>val 201</span></li>
+				<li><span>item 202</span><span>val 202</span></li>
+				<li><span>item 203</span><span>val 203</span></li>
+				<li><span>item 204</span><span>val 204</span></li>
+				<li><span>item 205</span><span>val 205</span></li>
+				<li><span>item 206</span><span>val 206</span></li>
+				<li><span>item 207</span><span>val 207</span></li>
+				<li><span>item 208</span><span>val 208</span></li>
+				<li><span>item 209</span><span>val 209</span></li>
+				<li><span>item 210</span><span>val 210</span></li>
+				<li><span>item 211</span><span>val 211</span></li>
+				<li><span>item 212</span><span>val 212</span></li>
+				<li><span>item 213</span><span>val 213</span></li>
+				<li><span>item 214</span><span>val 214</span></li>
+				<li><span>item 215</span><span>val 215</span></li>
+				<li><span>item 216</span><span>val 216</span></li>
+				<li><span>item 217</span><span>val 217</span></li>
+				<li><span>item 218</span><span>val 218</span></li>
+				<li><span>item 219</span><span>val 219</span></li>
+				<li><span>item 220</span><span>val 220</span></li>
+				<li><span>item 221</span><span>val 221</span></li>
+				<li><span>item 222</span><span>val 222</span></li>
+				<li><span>item 223</span><span>val 223</span></li>
+				<li><span>item 224</span><span>val 224</span></li>
+				<li><span>item 225</span><span>val 225</span></li>
+				<li><span>item 226</span><span>val 226</span></li>
+				<li><span>item 227</span><span>val 227</span></li>
+				<li><span>item 228</span><span>val 228</span></li>
+				<li><span>item 229</span><span>val 229</span></li>
+				<li><span>item 230</span><span>val 230</span></li>
+				<li><span>item 231</span><span>val 231</span></li>
+				<li><span>item 232</span><span>val 232</span></li>
+				<li><span>item 233</span><span>val 233</span></li>
+				<li><span>item 234</span><span>val 234</span></li>
+				<li><span>item 235</span><span>val 235</span></li>
+				<li><span>item 236</span><span>val 236</span></li>
+				<li><span>item 237</span><span>val 237</span></li>
+				<li><span>item 238</span><span>val 238</span></li>
+				<li><span>item 239</span><span>val 239</span></li>
+				<li><span>item 240</span><span>val 240</span></li>
+				<li><span>item 241</span><span>val 241</span></li>
+				<li><span>item 242</span><span>val 242</span></li>
+				<li><span>item 243</span><span>val 243</span></li>
+				<li><span>item 244</span><span>val 244</span></li>
+				<li><span>item 245</span><span>val 245</span></li>
+				<li><span>item 246</span><span>val 246</span></li>
+				<li><span>item 247</span><span>val 247</span></li>
+				<li><span>item 248</span><span>val 248</span></li>
+				<li><span>item 249</span><span>val 249</span></li>
+				<li><span>item 250</span><span>val 250</span></li>
+				<li><span>item 251</span><span>val 251</span></li>
+				<li><span>item 252</span><span>val 252</span></li>
+				<li><span>item 253</span><span>val 253</span></li>
+				<li><span>item 254</span><span>val 254</span></li>
+				<li><span>item 255</span><span>val 255</span></li>
+				<li><span>item 256</span><span>val 256</span></li>
+				<li><span>item 257</span><span>val 257</span></li>
+				<li><span>item 258</span><span>val 258</span></li>
+				<li><span>item 259</span><span>val 259</span></li>
+				<li><span>item 260</span><span>val 260</span></li>
+				<li><span>item 261</span><span>val 261</span></li>
+				<li><span>item 262</span><span>val 262</span></li>
+				<li><span>item 263</span><span>val 263</span></li>
+				<li><span>item 264</span><span>val 264</span></li>
+				<li><span>item 265</span><span>val 265</span></li>
+				<li><span>item 266</span><span>val 266</span></li>
+				<li><span>item 267</span><span>val 267</span></li>
+				<li><span>item 268</span><span>val 268</span></li>
+				<li><span>item 269</span><span>val 269</span></li>
+				<li><span>item 270</span><span>val 270</span></li>
+				<li><span>item 271</span><span>val 271</span></li>
+				<li><span>item 272</span><span>val 272</span></li>
+				<li><span>item 273</span><span>val 273</span></li>
+				<li><span>item 274</span><span>val 274</span></li>
+				<li><span>item 275</span><span>val 275</span></li>
+				<li><span>item 276</span><span>val 276</span></li>
+				<li><span>item 277</span><span>val 277</span></li>
+				<li><span>item 278</span><span>val 278</span></li>
+				<li><span>item 279</span><span>val 279</span></li>
+				<li><span>item 280</span><span>val 280</span></li>
+				<li><span>item 281</span><span>val 281</span></li>
+				<li><span>item 282</span><span>val 282</span></li>
+				<li><span>item 283</span><span>val 283</span></li>
+				<li><span>item 284</span><span>val 284</span></li>
+				<li><span>item 285</span><span>val 285</span></li>
+				<li><span>item 286</span><span>val 286</span></li>
+				<li><span>item 287</span><span>val 287</span></li>
+				<li><span>item 288</span><span>val 288</span></li>
+				<li><span>item 289</span><span>val 289</span></li>
+				<li><span>item 290</span><span>val 290</span></li>
+				<li><span>item 291</span><span>val 291</span></li>
+				<li><span>item 292</span><span>val 292</span></li>
+				<li><span>item 293</span><span>val 293</span></li>
+				<li><span>item 294</span><span>val 294</span></li>
+				<li><span>item 295</span><span>val 295</span></li>
+				<li><span>item 296</span><span>val 296</span></li>
+				<li><span>item 297</span><span>val 297</span></li>
+				<li><span>item 298</span><span>val 298</span></li>
+				<li><span>item 299</span><span>val 299</span></li>
+				<li><span>item 300</span><span>val 300</span></li>
+			</ul>
+		</section>
+		<footer><input type="text" value="点击我试试看看键盘能不能盖住"></footer>
+	</div>
+</body>
+</html>

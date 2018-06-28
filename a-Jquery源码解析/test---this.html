@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+//	var obj={
+//		"name":'heyushuo',
+//		constructor:people,
+//		say:function(){
+//			console.log(this)
+//		}
+//	}
+//	obj.say()
+	
+	
+	function people(){
+		this.name='heyushuo'
+		this.say=function(){
+			
+		}
+	}
+	people.prototype={
+		"age":function(){
+			
+		}
+	}
+	people.fn=people.prototype={
+		good:function(){
+			
+		},
+		init:function(){
+			console.log(this)
+		}
+	}
+	
+	people.fn.init()
+</script>

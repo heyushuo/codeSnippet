@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+//	对象遍历
+	var obj={
+		"name":"何玉硕",
+		"age":40,
+		"birthday":"1992-01-09"
+	}
+	
+	//最普遍的遍历对象的方法 for in
+	for(var i in obj){
+		console.log(i)
+		console.log(obj[i])
+	}
+	//1.使用Object.keys()遍历 返回一个数组,包括对象自身的(不含继承的)所有可枚举属性(不含Symbol属性).
+	Object.keys(obj).forEach(function(key){
+		console.log(key +"   "+ obj[key])
+	})
+	//Object.getOwnPropertyNames()方法返回对象的所有自身属性的属性名（包括不可枚举的属性）组成的数组，但不会获取原型链上的属性。
+	Object.getOwnPropertyNames(obj).forEach(function(key){
+		 console.log(key +"   "+ obj[key])
+        //打印 name kebi  age 40   
+	})
+	//for..of为ES6新增的方法，主要来遍历可迭代的对象（包括Array, Map, Set, arguments等），
+	
+//	它主要用来获取对象的属性值，而for..in主要获取对象的属性名。
+//for..of为ES6新增的方法，主要来遍历可迭代的对象（包括Array, Map, Set, arguments等），
+//它主要用来获取对象的属性值，而for..in主要获取对象的属性名
+var arr=["red","black","yellow"]
+	for (var j of arr) {
+	  console.log(j); // red green blue undefined undefined yellow
+	}
+	
+	for (var j of arr) {
+	  console.log(j); // red green blue undefined undefined yellow
+	}
+	
+	
+	//遍历数组
+	var arr=[1,2,3,4];
+
+	arr.forEach(function(val, index) {
+	
+	console.log(val, index);
+	});
+//使用for..in..遍历/
+var arr2=["张三","李四","王五","赵六"];
+
+for (var i in arr2){
+
+console.log(i,":",arr2[i]);
+
+}
+//使用for-of遍历
+//
+//   不仅支持数组，还支持大多数类数组对象，例如DOM NodeList对象.
+
+var arr1=["张三","李四","王五","赵六"];
+
+for(var value of arr1) {
+
+	console.log(value);
+
+}
+
+//map和forEach类似
+
+//forEach()方法不会返回执行结果，而是undefined。也就是说，forEach()会修改原来的数组。
+//而map()方法会得到一个新的数组并返回。
+//不能使用break语句中断循环，也不能使用return语句返回到外层函数。
+//map遍历支持使用return语句，支持return返回值
+
+let newarr = [1, 2, 3, 4, 5];
+newarr.forEach((num, index) => {
+ 	newarr[index] = num * 2;
+});
+console.log(newarr)
+var maparr=newarr.map(num=>{
+		return num*2
+	})
+
+console.log(newarr)
+console.log(maparr)
+
+var arr=["小明","小红","小黄"]
+1.forEach
+arr.forEach((item,index)=>{
+	console.log(index+":"+item) //打印 0:小明 1:小红 2:小黄
+})
+2.Map
+var returnArr=arr.map((item,index)=>{
+	return item+"1"
+})
+console.log(returnArr)          //打印 ["小明1", "小红1", "小黄1"]
+</script>

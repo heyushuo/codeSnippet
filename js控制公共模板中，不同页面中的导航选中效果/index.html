@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+<style>
+.active {
+    color: red;
+}
+</style>
+<ul id="tab2">
+    <li><a href="index.html">首页</a></li>
+    <li><a href="news.html">新闻</a></li>
+    <li><a href="about.html">关于</a></li>
+    <li><a href="job.html">工作</a></li>
+    <li><a href="ad.html">广告</a></li>
+</ul>
+<script>
+//这里的js, 可以做为一个外部的JS文件, 然后由上面这些页面统一引入即可.
+(function(){
+    var tDiv = document.getElementById("tab2"),
+        links = tDiv.getElementsByTagName("a"),
+        index = 0,//默认第一个菜单项
+        url = location.href.split('?')[0].split('/').pop();//取当前URL最后一个 / 后面的文件名，pop方法是删除最后一个元素并返回最后一个元素
+		console.log(location.href.split("?"))
+		console.log(location.href.split('?')[0].split('/').pop())
+    if(url){//如果有取到, 则进行匹配, 否则默认为首页(即index的值所指向的那个)
+        for (var i=links.length; i--;) {//遍历 menu 的中连接地址
+            if(links[i].href.indexOf(url) !== -1){
+                index = i;
+                break;
+            }
+        }
+    }
+
+    links[index].className = 'active';
+})();
+</script>
+ </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{margin: 0;padding: 0;}
+			a {
+		    position: relative;
+		    display: inline-block;
+		    outline: none;
+		    text-decoration: none;
+		    color: #000;
+		    font-size: 32px;
+		    /*padding: 5px 10px;*/
+		    margin-left: 200px;
+		}
+
+		a:hover::before, a:hover::after { position: absolute;}
+		a:hover::before { content: "我是伪元素"; left: -200px; }
+		a:hover::after { content: "我是after"; right:  -150px; }
+		/*------------------------------------------------------*/
+		p:before
+		{ 
+		content:"haorooms：-";
+		background-color:yellow;
+		color:red;
+		font-weight:bold;
+		}
+		
+		/*--------------------------------------------------------------------------------*/
+		.haorooms{margin-top:30px}    
+
+		span{
+	            position: relative;
+	            display: inline-block;
+	        }
+        span:hover{
+            cursor: pointer;
+        }
+        /*这个是在元素之前,,所以需要left:100%     让其回到后边边然后自在进行调节 */
+        span:hover:before{
+            content: attr(data-haorooms);
+            background-color: #2085c5;
+    		border-radius:3px;
+            color: #fff;
+            padding: 10px;
+            position: absolute;
+            left: 100%;
+            top: -70%;
+            margin-left: 8px;
+            white-space: pre; /*空白会被浏览器保留*/
+        }
+        span:hover:after{
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-right: 8px solid #2085c5;
+            border-top: 8px solid transparent;  /*transparent:是透明的意思是*/
+            border-bottom: 8px solid transparent;
+        }
+        
+        
+        
+        
+        /*----------------------------------------------*/
+       .haorooms {
+			    position:relative;
+			    display:inline-block;
+			    font-size:80px; /*  任何宽度都可以 */
+			    color: black; /* 任何颜色，或透明 */
+			    overflow:hidden;
+			    white-space: pre; /* 处理空格 */
+			}
+			.haorooms:before {
+			    display:block;
+			    z-index:1;
+			    position:absolute;
+			    top:0;
+			    left:0;
+			    width: 50%;
+			    content: attr(data-content); /* 伪元素的动态获取内容 */
+			    overflow:hidden;
+			    color: #f00;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+			}
+			.box:before{
+				content:"我是伪元素"
+			}
+			.text{
+				margin-left: 300px;
+				position: relative;
+			}
+			.text:after{content: "图标";position: absolute;right: 6px;top: 2px;font-size: 12px;}
+		</style>
+	</head>
+	<body>
+		
+		<a href="#">haorooms</a>
+		<p>你好</p>
+		
+		<div class="haorooms">
+        	<span data-haorooms="haorooms鼠标效果tips-纯css">haorooms测试</span>
+		</div>
+		
+		
+		
+		<div id="a">
+			<span class="haorooms" data-content="前">前</span>
+			<span class="haorooms" data-content="端">端</span>
+			<span class="haorooms" data-content="博">博</span>
+			<span class="haorooms" data-content="客">客</span>
+		</div>
+		<div class="box">
+			好好爱好
+		</div>
+		<i class="text">
+			<input style="padding-right: 30px;" type="text" class="text1" name="" id="" value="" />
+		</i>
+		
+	</body>
+</html>

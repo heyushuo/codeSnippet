@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="file" name="btn" id="btn" value="" />
+		<img src="" id="img"/>
+	</body>
+</html>
+<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	// var imgSrc = "https://img.alicdn.com/bao/uploaded/TB1qimQIpXXXXXbXFXXSutbFXXX.jpg";
+	
+
+
+          var imgSrc = "img/aa.jpg";
+
+    	function getBase64Image(img, width, height) { //width、height调用时传入具体像素值，控制大小 ,不传则默认图像大小
+    		var canvas = document.createElement("canvas");
+    		canvas.width = width ? width : img.width;
+    		canvas.height = height ? height : img.height;
+
+    		var ctx = canvas.getContext("2d");
+    		ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    		var dataURL = canvas.toDataURL();
+    		return dataURL;
+    	}
+    	var image = new Image();
+
+    	image.src = imgSrc;
+    	console.log(image)
+		image.onload=function(){
+			console.log("heyushuo")
+			console.log(getBase64Image(image))
+			$("#img").attr("src",getBase64Image(image))
+			
+		}
+    
+    
+
+ 
+    </script>

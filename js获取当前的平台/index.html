@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	
+    // 获取平台
+    var getSystem = function () {
+
+        var i;
+        var ua = window.navigator.userAgent.toLocaleLowerCase();
+        var system = ['iphone', 'android', 'windows', 'ipad', 'mac'];
+
+        for (i = 0; i < system.length; i++) {
+            if (ua.indexOf(system[i]) > -1) {
+                return system[i];
+            }
+        }
+
+        return 'other';
+
+    };
+</script>

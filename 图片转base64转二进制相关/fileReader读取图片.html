@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<input type="file" id="fileImg" multiple >
+			<form>
+				<img style="width: 100px;height: 100px;" src="" id="test" alt="">
+			</form>
+		</div>
+	</body>
+</html>
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+	$("#fileImg").change(function(){
+		console.log(this.files.length)
+		// var filebtn = document.getElementById(id);
+		// console.log(filebtn);
+		// var files = filebtn.target.files;
+		// console.log(filebtn.target);
+		// console.log(files);
+		var files = this.files;
+		console.log(files)
+		for (var i = 0; i<files.length; i++) {
+   			var f=files[i];
+	      // Only process image files.
+	      if (!f.type.match('image.*')) {
+	        continue;
+	      }
+   	console.log(f)
+	      var reader = new FileReader();//创建读取文件的对象
+		  reader.onload=function(){
+		  	var result=this.result;
+		  	$("#test").prop("src",result);
+		  	console.log(result)
+		  	var arr = result.split(',');
+		  	 var type = arr[0].match(/:(.*?);/)[1];//获得图片的类型
+		  	 alert(type)
+		  	var i=$("#test");
+		  	var width=$("#test").width();
+		  	var height=$("#test").height();
+		  	console.log(width)
+		  	console.log(height)
+		  	console.log(result.length);//查看图片的尺寸大小
+		  }
+	      // Read in the image file as a data URL.
+	      reader.readAsDataURL(f);
+	    }
+		
+})
+	
+	
+</script>

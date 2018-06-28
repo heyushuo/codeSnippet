@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<title>背景切换音频切换</title>
+	<link rel="stylesheet" href="css/index.css">
+	<script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+              resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+              recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                var fz = 32 * (clientWidth / 750);
+                fz = (fz > 32 ? 32 : fz);
+                docEl.style.fontSize = fz + 'px';
+                win._fz = fz;
+              };
+            if (!doc.addEventListener) return;
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+
+            window.recalc = recalc;
+        })(document, window);
+    </script>
+</head>
+<body>
+	<header>灯光操作</header>
+	<div>
+		<ul id="ul-id">
+			<li>
+				<span class="span-light" >
+					<audio src="audio/one.wav" class="audio" id="audio"></audio>
+				</span>
+				<p>新灯光一</p>
+			</li>
+			<li>
+				<span class="span-light">
+					<audio src="audio/two.wav" class="audio"></audio>
+				</span>
+				<p>新灯光二</p>
+			</li>
+			<li>
+				<span class="span-light">
+					<audio src="audio/three.wav" class="audio"></audio>
+				</span>
+				<p>新灯光三</p>
+			</li>
+			<li>
+				<span class="span-light">
+					<audio src="audio/four.wav" class="audio"></audio>
+				</span>
+				<p>新灯光四</p>
+			</li>
+			<li>
+				<span class="span-light">
+					<audio src="audio/five.wav" class="audio"></audio>
+				</span>
+				<p>新灯光五</p>
+			</li>
+			<li>
+				<span class="span-light">
+					<audio src="audio/six.wav" class="audio"></audio>
+				</span>
+				<p>新灯光六</p>
+			</li>
+		</ul>
+	</div>
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script>
+		$(function(){
+			$("#ul-id").on("touchstart","li",function(){
+				if($(this).find("span").hasClass("span-light")){
+					$(this).find("span").removeClass("span-light").addClass("span-audio");
+					$(this).siblings().find("span").removeClass("span-audio").addClass("span-light");
+						console.log($(this).find("audio"))
+					//这个是控制当前的
+						$(this).find("audio")[0].play();
+				
+					//这个控制其他的,其他的需要都关闭
+					$(this).siblings().each(function(index, el) {
+						$(el).find("audio")[0].pause();	
+					});
+									
+
+
+				}else{
+					//音乐暂停不能直接使用$(this) 复发识别
+					$(this).each(function(index, el) {
+						console.log($(el).find("audio")[0])
+						$(el).find("audio")[0].pause();	
+					});
+					// $(this).find("audio")[0].pause();
+					
+					$(this).find("span").removeClass("span-audio").addClass("span-light");
+				}	
+			})
+		})
+	</script>
+</body>
+</html>

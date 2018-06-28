@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>冒泡排序和选择排序</title>
+		<style type="text/css">
+			* {
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--<div id="">
+			
+		</div>-->
+	</body>
+
+</html>
+<script type="text/javascript">
+	//选择排序
+	var arr = [9, 1, 5, 4, 7];
+	var temp = "";
+	for(var i = 0; i < arr.length; i++) {
+		for(var j = i + 1; j < arr.length; j++) {
+			if(arr[i] > arr[j]) {
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+		//		console.log(arr[i]);
+	}
+
+	//冒泡排序
+	var array = [1, 4, -8, -3, 6, 12, 9, 8];
+
+	function sort(arr) {
+		for(var j = 0; j < arr.length - 1; j++) {
+			//两两比较，如果前一个比后一个大，则交换位置。
+			for(var i = 0; i < arr.length - 1 - j; i++) {
+				if(arr[i] > arr[i + 1]) {
+					var temp = arr[i];
+					arr[i] = arr[i + 1];
+					arr[i + 1] = temp;
+				}
+			}
+		}
+	}
+	sort(array);
+	document.write(array);
+
+	console.log(arr)
+	arr.sort(function(a, b) {
+		console.log(a - b)
+		return a - b;
+	})
+	console.log(arr)
+	var str = "123456789"
+	console.log(arr.join(",") + "----" + "数组变成字符串")
+	console.log(str.split(""))
+	console.log('最大值是：' + Math.max(...arr))
+
+	//数组去重
+	//	一
+	var bb = [1, 2, 3, 1, 'a', 1, 'a'].filter(function(ele, index, array) {
+		console.log(array.indexOf(ele))
+		return index === array.indexOf(ele)
+	})
+	//
+
+	console.log(bb)
+	console.log([...new Set([1, 2, 3, 1, 'a', 1, 'a'])])
+	//数组去重
+	var n=[];
+	for(var i=o;i<arr.length;i++){
+		if(n.indexOf(arr[i])==-1){
+			n.push(arr[i])
+		}
+	}
+	//数组去重
+	var m=[];
+	var o={};
+	for(var i=o;i<arr.length;i++){
+		if(!o[arr[i]]){
+			o[arr[i]]=1;
+			n.push(arr[i])
+		}
+	}
+	var objArr = [{
+			'id': 1
+		},
+		{
+			'id': 2
+		},
+		{
+			'id': 3
+		},
+		{
+			'id': 1
+		},
+		{
+			'id': 4
+		},
+		{
+			'id': 2
+		},
+		{
+			'id': 1
+		}
+	]
+	var color = ['red', 'blue', 'yellow', 'black'];
+	var index = 0;
+	for(var a = 0; a < objArr.length; a++) {
+		for(var b = a + 1; b < objArr.length; b++) {
+			if(objArr[a].id == objArr[b].id) {
+				objArr[a].color = color[index]
+
+				objArr[b].color = color[index]
+				index++;
+			}
+		}
+	}
+	console.log(objArr)
+</script>

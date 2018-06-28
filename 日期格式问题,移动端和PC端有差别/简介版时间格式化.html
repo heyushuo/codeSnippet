@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+//可以使用的时间格式化
+var  ns=1280977330748;
+function getLocalTime(nS) {
+    var dateStr=new Date(nS).toLocaleDateString();
+    console.log(dateStr)
+    dateStr=dateStr.replace(/年|月/g, "/").replace(/日/g,"");
+    var dataArray = dateStr.split("/");
+    dataArray[1] < 10 ? dataArray[1] = "0" + dataArray[1] : dataArray[1] = dataArray[1];
+    dataArray[2] < 10 ? dataArray[2] = "0" + dataArray[2] : dataArray[2] = dataArray[2];
+    var str= dataArray.join("-");
+    var hours=(new Date(nS)).getHours(); //获取当前小时数(0-23)
+    var minutes=(new Date(nS)).getMinutes(); //获取当前分钟数(0-59)
+    var seconds=(new Date(nS)).getSeconds();
+    if (minutes < 10) {
+        minutes = '0' + minutes;
+    }
+    if (seconds < 10) {
+        seconds = '0' + seconds;
+    }
+   return str+=" "+hours+":"+minutes+":"+seconds
+}
+console.log(getLocalTime(ns))
+//ns传入的为时间戳
+
+//例如：我在时间戳转为20160802这个格式的时候，自己封装了一个函数，如下
+
+//	function getLocalTime(nS) {
+//  var dataArray = new Date(parseInt(nS) * 1000).toLocaleDateString().split("/");
+//  dataArray[1] < 10 ? dataArray[1] = "0" + dataArray[1] : dataArray[1] = dataArray[1];
+//  dataArray[2] < 10 ? dataArray[2] = "0" + dataArray[2] : dataArray[2] = dataArray[2];
+//  return dataArray.join("");
+//}
+//	问题就在这个函数了，toLocaleDateString(),
+//在pc端生成的是2016/08/02这种格式，但是在移动端生成了2016年8月2日这种格式了。这点大家要注意。
+	
+//
+	
+	
+//	var ns=new Date().toLocaleDateString();//把日期转换为2016/11/25 这种格式  但是在移动端不是这种格式移动端生成了2016年8月2日
+//	console.log(ns) //2016/11/25
+//	var  a=new Date().toLocaleTimeString();
+//	console.log(a)//下午6:40:06
+//	var b=new Date().toLocaleString( );
+//	console.log(b)//2016/11/25 下午6:40:06
+//	
+//	
+//	var c=new Date(5*1000)
+//	var d=new Date()
+//	var e=c.toLocaleDateString()
+//	console.log(c)
+//	console.log(d)
+//	console.log(e)
+	//---------------------------------------------------------------------
+	//此处传的值应该是毫秒数
+	//
+//	function getLocalTime(nS) {
+//  var dataArray = new Date(nS).toLocaleDateString().split("/");
+//  dataArray[1] < 10 ? dataArray[1] = "0" + dataArray[1] : dataArray[1] = dataArray[1];
+//  dataArray[2] < 10 ? dataArray[2] = "0" + dataArray[2] : dataArray[2] = dataArray[2];
+//  return dataArray.join("/");
+//}
+	
+	
+	//我们把上面的函数进行处理一下。如下：
+//var  ns=1484722651000;
+//function getLocalTime(nS) {
+//  var dateStr=new Date(nS).toLocaleDateString();
+//  dateStr=dateStr.replace(/年|月/g, "/").replace(/日/g,"");
+//  var dataArray = dateStr.split("/");
+//  dataArray[1] < 10 ? dataArray[1] = "0" + dataArray[1] : dataArray[1] = dataArray[1];
+//  dataArray[2] < 10 ? dataArray[2] = "0" + dataArray[2] : dataArray[2] = dataArray[2];
+//  return dataArray.join("/");
+//}
+//	console.log(getLocalTime(ns))
+//function getLocalTime(nS) {
+//  var dateStr=new Date(parseInt(nS) * 1000).toLocaleDateString();
+//  dateStr=dateStr.replace(/年|月/g, "/").replace(/日/g,"");
+//  var month = (new Date(dateStr)).getMonth() + 1;
+//  var year = (new Date(dateStr)).getFullYear();
+//  var date = (new Date(dateStr)).getDate();
+//  var hours=(new Date(dateStr)).getHours(); //获取当前小时数(0-23)
+//  var minutes=(new Date(dateStr)).getMinutes(); //获取当前分钟数(0-59)
+//  var Seconds=(new Date(dateStr)).getSeconds();
+//  if (month < 10) {
+//      month = '0' + month;
+//  }
+//  if (date < 10) {
+//      date = '0' + date;
+//  }
+//  return year +"-" +month+"-" + date+" "+hours+":"+minutes+":"+Seconds;
+//}
+//	console.log(getLocalTime(ns))
+//	
+//	var aa=new Date().getTime();
+//	console.log(aa)
+//	console.log(getLocalTime(aa))
+	
+//	var aa=Date.parse(new Date())
+//	console.log(aa)
+//	var bb=getLocalTime(aa)
+//	console.log(bb)	
+</script>
+<script type="text/javascript">
+	/**
+	 * 
+	 * myDate.toLocaleDateString(); //获取当前日期
+		var mytime=myDate.toLocaleTimeString(); //获取当前时间
+		myDate.toLocaleString( ); //获取日期与时间
+		===================================
+	 * 
+	 */
+</script>
+<!--[摘要：var myDate = new Date(); myDate.getYear(); //猎取当前年份(2位) myDate.getFullYear(); //猎取完全的年份(4位,1970-????) myDate.getMonth(); //猎取当前月份(0-11,0代表1月) myDate.getDate(); //猎取当前日(1-31) myDate.ge]-->
+
+<!--var myDate = new Date();
+myDate.getYear(); //获取当前年份(2位)
+myDate.getFullYear(); //获取完整的年份(4位,1970-????)
+myDate.getMonth(); //获取当前月份(0-11,0代表1月)
+myDate.getDate(); //获取当前日(1-31)
+myDate.getDay(); //获取当前星期X(0-6,0代表星期天)
+myDate.getTime(); //获取当前时间(从1970.1.1开始的毫秒数)
+myDate.getHours(); //获取当前小时数(0-23)
+myDate.getMinutes(); //获取当前分钟数(0-59)
+myDate.getSeconds(); //获取当前秒数(0-59)
+
+
+js获取时间戳的方法
+JS获取当前时间戳的方法-JavaScript 获取当前时间戳
+JavaScript 获取当前时间戳：
+第一种方法：.//貌似存在兼容问题
+var timestamp =Date.parse(newDate());
+结果：1280977330000
+第二种方法：
+var timestamp =(newDate()).valueOf();
+结果：1280977330748
+第三种方法：
+var timestamp=newDate().getTime()；
+结果：1280977330748
+
+第一种：获取的时间戳是把毫秒改成000显示，
+第二种和第三种是获取了当前毫秒的时间戳。
+
+//封装的时间戳函数
+function transformTime(str) {
+    str = str.replace(/-/g, '/');
+    var time = (new Date(str)).getTime();
+    return time / 1000;
+}
+
+-->
+	
+	
+	
+	<!--
+		我们把上面的函数进行处理一下。如下：
+
+function getLocalTime(nS) {
+    var dateStr=new Date(parseInt(nS) * 1000).toLocaleDateString();
+    dateStr=dateStr.replace(/年|月/g, "/").replace(/日/g,"");
+    var dataArray = dateStr.split("/");
+    dataArray[1] < 10 ? dataArray[1] = "0" + dataArray[1] : dataArray[1] = dataArray[1];
+    dataArray[2] < 10 ? dataArray[2] = "0" + dataArray[2] : dataArray[2] = dataArray[2];
+    return dataArray.join("");
+}
+或者这么写也可以
+
+function getLocalTime(nS) {
+    var dateStr=new Date(parseInt(nS) * 1000).toLocaleDateString();
+    dateStr=dateStr.replace(/年|月/g, "/").replace(/日/g,"");
+    var month = (new Date(dateStr)).getMonth() + 1;
+    var year = (new Date(dateStr)).getFullYear();
+    var date = (new Date(dateStr)).getDate();
+    var hours=myDate.getHours(); //获取当前小时数(0-23)
+    var minutes=myDate.getMinutes(); //获取当前分钟数(0-59)
+    var Seconds=myDate.getSeconds();
+    if (month < 10) {
+        month = '0' + month;
+    }
+    if (date < 10) {
+        date = '0' + date;
+    }
+    return year + month + date+hours+minutes+Seconds;
+}
+
+
+
+上面是介绍的2种方式，都是可以处理移动端和pc端所产生差异的！
+
+
+
+	-->

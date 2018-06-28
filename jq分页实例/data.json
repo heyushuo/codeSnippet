@@ -1,0 +1,53 @@
+{
+	"list":[
+	        {
+	        	"id": 2,
+	        	"promoterUserId":"小王",
+	        	"startTime": 1483891200000,
+	        	"status": 3
+        	},
+        	{
+        		"id": 4,
+        		"promoterUserId":"小明",
+        		"startTime": 1483931218000,
+        		"status": 3
+        	},
+        	{
+        		"id": 3,
+        		"promoterUserId": "小花",
+        		"startTime": 1483931218000,
+        		"status": 3
+        	},
+        	{
+        		"id": 3,
+        		"promoterUserId": "小花1",
+        		"startTime": 1483931218000,
+        		"status": 3
+        	},
+        	{
+        		"id": 3,
+        		"promoterUserId":"小花2",
+        		"startTime": 1483931218000,
+        		"status": 3
+        	},
+        	{
+        		"id": 3,
+        		"promoterUserId": 2,
+        		"startTime": 1483931218000,
+        		"status": 3
+        	},
+        	{
+        		"id": 3,
+        		"promoterUserId": 2,
+        		"startTime": 1483931218000,
+        		"status": 3
+        	},
+        	{
+        		"id": 3,
+        		"promoterUserId": 2,
+        		"startTime": 1483931218000,
+        		"status": 3
+        	}
+	        		
+	        ]
+	}

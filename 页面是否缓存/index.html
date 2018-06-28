@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>阿里山的减肥啦就是对方</li>
+			<li>啊阿发</li>
+			<input type="text" name="" id="" value="" />
+			<select name="">
+				<option value="1">打发</option>
+				<option value="2">盛世东方</option>
+			</select>
+			<li>操作是在不是打发斯蒂芬 </li>
+			<li>是从VB你猜VB你 </li>
+			<li>热特让他热特让他</li>
+			<li>阿里山的减肥啦就是对方</li>
+			<li>啊阿发</li>
+			<li>操作是在不是打发斯蒂芬 </li>
+			<li>是从VB你猜VB你 </li>
+			<li>热特让他热特让他</li>
+			<li>阿里山的减肥啦就是对方</li>
+			<li>啊阿发</li>
+			<li>操作是在不是打发斯蒂芬 </li>
+			<li>是从VB你猜VB你 </li>
+			<li>热特让他热特让他</li>
+			<li>阿里山的减肥啦就是对方</li>
+			<li>啊阿发</li>
+			<li>操作是在不是打发斯蒂芬 </li>
+			<li>是从VB你猜VB你 </li>
+			<li>热特让他热特让他</li>
+			<li>阿里山的减肥啦就是对方</li>
+			<li>啊阿发</li>
+			<li>操作是在不是打发斯蒂芬 </li>
+			<li>是从VB你猜VB你 </li>
+			<li>热特让他热特让他</li>
+			<li>阿里山的减肥啦就是对方</li>
+			<li>啊阿发</li>
+			<li>操作是在不是打发斯蒂芬 </li>
+			<li>是从VB你猜VB你 </li>
+			<li>热特让他热特让他</li>
+			<li>阿里山的减肥啦就是对方</li>
+			<li>啊阿发</li>
+			<li>操作是在不是打发斯蒂芬 </li>
+			<li>是从VB你猜VB你 </li>
+			<li>热特让他热特让他</li>
+			<li>阿里山的减肥啦就是对方</li>
+			<li>啊阿发</li>
+			<li>操作是在不是打发斯蒂芬 </li>
+			<li>是从VB你猜VB你 </li>
+			<li>热特让他热特让他</li>
+		</ul>
+	</body>
+</html>
+<script src="./jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	window.onpageshow = function (e) {
+//		alert('heyusuo')
+//		如果页面从浏览器的缓存中读取该属性返回 ture，否则返回 false
+		alert(e.persisted)
+		/*if (e.persisted) { //没有Bfcache缓存
+	        //pageInit();
+	       window.location.reload() 
+	    }*/
+	}
+	$("ul li").click(function(){
+//		window.location.href="detail.html"
+		var top=document.documentElement.scrollTop  || document.body.scrollTop
+		
+//		window.scrollTo(0,0)
+		getScrollTop()
+	})
+	
+	function getScrollTop(){
+	　　var scrollTop = 0, bodyScrollTop = 0, documentScrollTop = 0;
+	　　if(document.body){
+	　　　　bodyScrollTop = document.body.scrollTop;
+	　　}
+	
+	　　if(document.documentElement){
+	　　　　documentScrollTop = document.documentElement.scrollTop;
+	　　}
+	alert(bodyScrollTop)
+	alert(documentScrollTop)
+	　　scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
+	　　return scrollTop;
+	}
+</script>

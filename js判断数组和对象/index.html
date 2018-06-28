@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	var arr=[1,2,3];
+	var obj={
+		"name":"heyushuo"
+	}
+	//这个最靠谱
+	console.log(Object.prototype.toString(arr)=='[object Array]')
+	console.log(Object.prototype.toString(obj)=='[object Obiect]')
+	
+	//instanceof
+	 console.log(arr instanceof Array); //true
+    console.log(obj instanceof Array); //false
+    //constructor
+    console.log(arr.constructor === Array); //true
+    console.log(obj.constructor === Array); //false
+    
+  //  随便找一个数组仅有的方法，来判断数组和对象谁有该方法即可（样例以sort来举例）
+    console.log(arr.sort === Array.prototype.sort); //true
+    console.log(obj.sort === Array.prototype.sort); //false
+</script>

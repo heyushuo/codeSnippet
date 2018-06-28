@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>   
+<html>   
+<head>   
+<meta charset="utf-8">   
+<title></title>   
+<style type="text/css">  
+body{margin:0;padding:0;}  
+img{vertical-align:bottom;}  
+</style>  
+</head>  
+<body>  					 <!--写上这个可以直接定位到图片不让选择其他文件-->
+<input type="file" multiple accept="image/gif,image/png,,image/jpeg" id="Files">  
+<div id="Preview"></div>  
+<ul id="Errors"></ul>  
+<script>  
+/**
+ * IE9以及以上的浏览器支持此操作
+ * @param {Object} e
+ * 
+ * */function fileSelect(e) {
+	e = e || window.event;
+	//获取文件对象  此时获取的是files数组,  这个对象时数组!!!!是数组!!!
+	var files = e.target.files; //FileList Objects 
+	console.log(files[0].name)
+	//判断文件是否为图片
+	var ireg = /image\/.*/i,
+		p = document.getElementById('Preview'),
+		name;
+	var ul = document.getElementById('Errors');
+	for(var i = 0, f; f = files[i]; i++) {
+		//match() 方法可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配。
+		name=f.name;
+		if(!f.type.match(ireg)) {
+			//设置错误信息  
+			var li = document.createElement('li');
+			li.innerHTML = '<li>' + f.name + '不是图片文件.</li>';
+
+			ul.appendChild(li);
+
+			continue;
+		}
+		//   FileReader创建对象
+		var reader = new FileReader();
+		//读取文件内容  
+		reader.readAsDataURL(f);
+		reader.onload =function(file) {
+				var span = document.createElement('span');
+				var img = new Image;
+				img.onload = function() {
+					console.log(img.height); // image is loaded; sizes are available  
+				};
+				img.src = this.result;
+				//通过result来获取Data URL  来显示图片
+				span.innerHTML = '<img class="thumb" src="' + this.result + '" alt="'+name+'" />';
+				p.insertBefore(span, null);
+		};
+	}
+}
+
+if(window.File && window.FileList && window.FileReader && window.Blob) {
+	document.getElementById('Files').addEventListener('change', fileSelect, false);  
+} else {  
+    document.write('您的浏览器不支持File Api');  
+}  
+</script>  
+</body>  
+</html>  
+<script type="text/javascript">
+//看浏览器是否支持          FileReader    html5的新属性
+//      if(window.FileReader) {  
+//		    var fr = new FileReader();  
+//		    // add your code here  
+//		}  
+//		else {  
+//		    alert("Not supported by your browser!");  
+//		}  
+//FileReader对象的readAsDataURL方法可以将读取到的文件编码成Data URL。
+//Data URL是一项特殊的技术，可以将资料(例如图片)内嵌在网页之中，不用放到外部文件。
+//使用Data URL的好处是，您不需要额外再发出一个HTTP 请求到服务器端取得额外的资料；
+//而缺点便是，网页的大小可能会变大。它适合应用在内嵌小图片，不建议将大图像文件编码成Data URL来使用。
+//您的图像文件不能够超过浏览器限定的大小，否则无法读取图像文件。
+</script>

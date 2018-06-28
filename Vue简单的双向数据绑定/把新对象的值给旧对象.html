@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//对象原型上添加一个extend方法
+	Object.defineProperty(Object.prototype, 'extend',{
+	  value : function(def, opt) {
+	        for(var key in opt){
+	            def[key] = opt[key];
+	        }
+	    return def;
+	  },
+	  writable: true,
+	  enumerable : false
+	});
+	
+	
+function func(options){
+    let def = {
+        payType: 'wechat',
+        buyType: -1,
+        isCard: false,
+        toUid: -1,
+        couponId: -1
+    };
+  
+    let opt = extend(def, options);
+  	console.log(def)
+    this.isCardPay = opt.isCard;
+    this.payType = opt.payType;
+}
+
+//使用
+func({
+    payType: 'ali',
+    buyType: 2,
+    isCard: true,
+    toUid: 123456,
+    couponId: 667890
+})
+
+
+
+
+//这里还可以是可以使用es6的结构赋值
+</script>

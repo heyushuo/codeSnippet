@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 200px;
+				height: 300px;
+				border: 1px solid black;
+				overflow-y: scroll;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+			<p>测试数据</p>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	/**	
+	 *  1.函数节流是指一定时间内js方法只跑一次。比如人的眨眼睛，就是一定时间内眨一次。这是函数节流最形象的解释。
+	 *	2.函数防抖是指频繁触发的情况下，只有足够的空闲时间，才执行代码一次。比如生活中的坐公交，就是一定时间内，如果有人陆续刷卡上车，司机就不会开车。只有别人没刷卡了，司机才开车。
+	 */
+	
+	// 函数节流
+var canRun = true;
+//window.onscroll
+//$(window).scroll(function(){//为了保证兼容性，这里取两个值，哪个有值取哪一个　　var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;　　//scrollTop就是触发滚轮事件时滚轮的高度}); 
+
+/*document.getElementById("box").onscroll = function(){
+    if(!canRun){
+        // 判断是否已空闲，如果在执行中，则直接return
+        return;
+    }
+	console.log("hhhhhh");
+	
+	//执行完设置为false，再次执行需要300毫秒后
+    canRun = false;
+    setTimeout(function(){
+        canRun = true;
+    }, 300);
+};*/
+
+//jq的滚动方法
+/*$(window).scroll(function(){
+	//为了保证兼容性，这里取两个值，哪个有值取哪一个　　
+	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;　　//scrollTop就是触发滚轮事件时滚轮的高度
+});*/
+
+
+
+
+
+// 函数防抖
+var timer = false;
+document.getElementById("box").onscroll = function(){
+    clearTimeout(timer); // 清除未执行的代码，重置回初始化状态
+
+    timer = setTimeout(function(){
+        console.log("函数防抖");
+    }, 300);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*函数防抖：如果有人进电梯（触发事件），那电梯将在10秒钟后出发（执行事件监听器），这时如果又有人进电梯了（在10秒内再次触发该事件），
+我们又得等10秒再出发（重新计时）。
+
+函数节流 ：保证如果电梯第一个人进来后，10秒后准时运送一次，这个时间从第一个人上电梯开始计时，不等待，如果没有人，则不运行*/
+</script>

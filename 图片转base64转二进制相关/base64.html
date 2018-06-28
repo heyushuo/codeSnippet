@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			.pull-left{
+				float: left;
+			}
+			p{
+				font-size: 12px;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="width: 500px;height: 300px;border: 1px solid black;">
+			<div class="pull-left" style="width: 150px;padding: 0px 10px;">
+				<p  style="padding: 5px 0;">上传图片</p>
+				<p><input style="width: 100px;" type="file" name="filePic" id="filePic" value="" /></p>
+				<p style="margin-top: 20px;">宽度：<input id="width" type="text" style="width: 40px;" /></p>
+				<p style="padding: 5px 0;" >高度：<input id="height" type="text"  style="width: 40px;" /></p>
+				<p><input type="button" name="btnPic" id="btnPic" value="确认" /></p>
+			</div>
+			<div class="pull-left">
+				<p style="padding: 5px 0;">图片预览</p>
+				<div id="piccontent" style="border: 1px solid black; width: 300px;height: 250px;overflow: scroll;">
+					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="js/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var width,height;
+	$("#filePic").change(function(){
+		var files = this.files[0];
+		var reader = new FileReader();//创建读取文件的对象
+		 reader.onload=function(){
+		  	var result=this.result;
+		  	var image = new Image();
+	    	image.src = result;
+		  	$("#piccontent").html(image);
+		  	image.onload=function(){
+				width=$("#piccontent").find('img').width();
+				height=$("#piccontent").find('img').width();
+				$("#width").val(width)
+		  		$("#height").val(height)
+			}
+		  
+		  }
+	      // Read in the image file as a data URL.
+	      reader.readAsDataURL(files);
+	})
+	$("#btnPic").click(function(){
+		width=$("#width").val();
+		height=$("#width").val();
+		$("#piccontent").find('img').css("width",width+'px');
+		$("#piccontent").find('img').css("height",height+'px');
+	})
+</script>

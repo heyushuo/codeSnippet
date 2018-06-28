@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+一般的两端对齐是使用text-align:justify，
+但是text-align:justify一般情况下只针对英文管用。
+（因为css是老外设计的，老外在justify判断的时候，
+是根据单词直接的空格来的，中文两个汉字之间没有空格，
+所以大部分情况下text-align:justify不管用，
+所以这个属性大部分形同虚设！）。
+
+步骤一 ：就是在汉字之间添加空格，然后再去除空格来实现。
+
+添加空格我们用js来实现，先split然后再join就可以了！
+
+代码如下：
+
+"某某某某haorooms博客".split("").join(" ");
+步骤二：添加空格之后，字间隙变大，会很难看，然后我们在用css的letter-spacing属性，进行相应的缩进。
+
+代码如下：
+
+letter-spacing: -0.15em;
+这样就达到了两端对齐的效果。
+
+总结
+按照上面的思路，总结起来，用jquery实现代码如下：
+
+$("#haorooms").css({"text-align":"justify","letter-spacing":"-0.15em"});
+$("#haorooms").html()=$("#haorooms").html().split("").join(" ");

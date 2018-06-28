@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	class father{
+		constructor(name){
+			this.name=name
+			this.names=[1,2,3]
+		}
+		getname(){
+			console.log(this.name)
+		}
+	}
+	
+	
+	class child extends father{
+		constructor(name){
+			super(name)
+		}
+		
+		sayHello(){
+			console.log('say Hello')
+		}
+	}
+	
+	var cc=new child("heyushuo");
+	cc.sayHello();  //say Hello
+	cc.getname();   //heyushuo
+ 	 cc.names.push("wqwq"); //修改了引用类型的内容
+     var c1=new child("sasasa");
+    console.log(c1.names)  //[1,2,3]  //新的实例不会修改还是原来的
+</script>

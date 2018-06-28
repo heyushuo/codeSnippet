@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">  
+		.hotsearch dd{  
+		float: left;  
+		line-height: 24px;  
+		margin-right: 30px;  
+		overflow: hidden;  
+		text-align: center;  
+		width: 4em; /*这个值是看最长能显示几个文字，如x，则为x em*/  
+		}  
+		.hotsearch dd a{  
+		display:block;  
+		}  
+		.w2{  
+		letter-spacing:2em; /*如果需要y个字两端对齐，则为(x-y)/(y-1),这里是（4-2）/(2-1)=2em */  
+		margin-right:-2em; /*同上*/  
+		}  
+		.w3{  
+		letter-spacing:0.5em; /*如果需要y个字两端对齐，则为(x-y)/(y-1),这里是（4-3）/(3-1)=0.5em */  
+		margin-right:-0.5em; /*同上*/  
+		}  
+		</style> 
+	</head>
+	<body>
+		<span style="font-size:12px;"><dl class="hotsearch" style="width:300px;">  
+		<dt>热门搜索</dt>  
+		<dd><a href="#" target="_blank" ref="nav" class="w3">电视机</a></dd>  
+		<dd><a href="#" target="_blank" ref="nav" class="w4">性感漂亮</a></dd>  
+		<dd><a href="#" target="_blank" ref="nav" class="w3">高跟鞋</a></dd>  
+		<dd><a href="#" target="_blank" ref="nav" class="w2">手机</a></dd>  
+		<dd><a href="#" target="_blank" ref="nav" class="w2">对齐</a></dd>  
+		<dd><a href="#" target="_blank" ref="nav" class="w3">牛仔裤</a></dd>  
+		<dd><a href="#" target="_blank" ref="nav" class="w4">小家碧玉</a></dd>  
+		<dd><a href="#" target="_blank" ref="nav" class="w2">家居</a></dd>  
+		</dl></span>  
+	</body>
+</html>

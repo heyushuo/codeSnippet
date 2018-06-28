@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="box box1 box2" id="box">
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var oBox=document.getElementById("box")
+	addClass(oBox,"heyushuo")
+	console.log(oBox.className)
+	delClass(oBox,'box1')
+	console.log(oBox.className)
+/**
+ * 判断是否存在类名
+ * @param {Object} el
+ * @param {Object} className
+ */
+function hasClass(el, className) {
+  let reg = new RegExp('(^|\\s)' + className + '(\\s|$)')
+  return reg.test(el.className)
+}
+
+/**
+ * 给元素添加类名
+ * @param {Object} el
+ * @param {Object} className
+ */
+ function addClass(el, className) {
+  if (hasClass(el, className)) {
+    return
+  }
+
+  let newClass = el.className.split(' ')
+  newClass.push(className)
+  el.className = newClass.join(' ')
+}
+/**
+ * 删除元素的类名
+ * @param {Object} el
+ * @param {Object} name
+ */
+ function delClass(el,name){
+ 	if (hasClass(el, name)) {
+	 	var nowClass = el.className.split(' ');
+	 	var newClass = [];
+		for(var i=0;i<nowClass.length;i++){
+			if(nowClass[i]!=name){
+				newClass.push(nowClass[i])
+			}
+		}
+		el.className = newClass.join(' ')
+  	}
+ }
+ 
+/**
+ * 1.获取元素的属性 需传入el和name
+ * 2.获得元素的属性 需要传入el,name和val
+ * @param {Object} el
+ * @param {Object} name
+ * @param {Object} val
+ */
+ function getData(el, name, val) {
+  const prefix = 'data-'
+  if (val) {
+    return el.setAttribute(prefix + name, val)
+  }
+  return el.getAttribute(prefix + name)
+}
+
+//let elementStyle = document.createElement('div').style
+//
+//let vendor = (() => {
+//let transformNames = {
+//  webkit: 'webkitTransform',
+//  Moz: 'MozTransform',
+//  O: 'OTransform',
+//  ms: 'msTransform',
+//  standard: 'transform'
+//}
+//
+//for (let key in transformNames) {
+//  if (elementStyle[transformNames[key]] !== undefined) {
+//    return key
+//  }
+//}
+//
+//return false
+//})()
+//
+// function prefixStyle(style) {
+//if (vendor === false) {
+//  return false
+//}
+//
+//if (vendor === 'standard') {
+//  return style
+//}
+//
+//return vendor + style.charAt(0).toUpperCase() + style.substr(1)
+//}
+
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="layer.css"/>
+		<script src="rem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="layer.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<input type="button" name="btn" id="btn" value="点击弹窗" />
+		<!-- 自定义alert框 -->
+        <div id="prompt_box">
+            <div class="prompt_mask">
+                <p>友情提示：</p>
+                <h2 id="prompt_title" class="prompt_title"></h2>
+                <span id="prompt_btn">確 認</span>
+            </div>
+        </div>
+	</body>
+</html>
+<script type="text/javascript">
+	var btn=document.getElementById("btn");
+	var prompt_btn=document.getElementById("prompt_btn");
+	btn.onclick=function(){
+		promptObj.init();
+	}
+	prompt_btn.onclick=function(){
+		promptObj.hidePrompt();
+	}
+</script>

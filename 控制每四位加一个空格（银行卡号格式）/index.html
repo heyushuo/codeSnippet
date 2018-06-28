@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="haorooms" id="haorooms" value="" />
+		<input type="text" id="heyushuo" />
+	</body>
+</html>
+<script src="../js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	!function () {
+    document.getElementById('haorooms').onkeyup = function (event) {
+      if((event.which >= 48 && event.which <= 57) ||(event.which >= 96 && event.which <= 105 )){
+        var v = this.value;
+        if(/\S{5}/.test(v)){
+            this.value = v.replace(/\s/g, '').replace(/(.{4})/g, "$1 ");
+        }
+      };
+   }
+}();
+</script>
+<script type="text/javascript">
+	  !function () {
+        $('#heyushuo').on('keyup mouseout input',function(e){
+       if((e.which >= 48 && e.which <= 57) ||(e.which >= 96 && e.which <= 105 )){
+            var $this = $(this),
+                v = $this.val();
+            /\S{5}/.test(v) && $this.val(v.replace(/\s/g,'').replace(/(.{4})/g, "$1 "));
+         }
+        });
+    }();
+</script>

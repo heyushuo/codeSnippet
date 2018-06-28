@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>理解对象</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	
+	//最基本的创建对象的方式，创建一个Object的实例，然后在再为它添加属性和方法
+	var person=new Object();
+	person.name='heyushuo';
+	person.age='25';
+	person.sayName=function(){
+		console.log(this.name)
+	}
+	person.sayName();
+	//早期的javascript开发人员都是使用上边的模式创建对象，几年后，对象字面量成为创建这种对象的首先模式
+	//对象字面量语法可以写成如下
+	
+	var person={
+		name:"heyushuo",
+		age:"25",
+		sayAge:function(){
+			console.log(this.age)
+		}
+	}
+	person.sayAge()
+	person.age="00"
+	console.log(person.age)
+//	property （属性）
+</script>

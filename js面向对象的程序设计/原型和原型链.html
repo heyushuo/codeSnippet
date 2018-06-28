@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li><a href="https://www.jianshu.com/p/dee9f8b14771" target="_blank" >最详尽的 JS 原型与原型链终极详解，没有「可能是」。（一）</a></li>
+			<li><a href="https://blog.csdn.net/sinat_21274091/article/details/52741788" target="_blank" >JS重点整理之JS原型链彻底搞清楚</a></li>
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	/*
+		JS 在创建对象（不论是普通对象还是函数对象）的时候，都有一个叫做__proto__ 的内置属性，用于指向创建它的构造函数的原型对象。
+		对象 person1 有一个 __proto__属性，创建它的构造函数是 Person，构造函数的原型对象是 Person.prototype ，所以：
+		person1.__proto__ == Person.prototype
+	*/
+	function Person(){
+		this.name="heyushuo"
+	}
+	Person.prototype.sayName=function(){
+		console.log(this.name)
+	}
+	
+	var person1=new Person();
+	console.log(person1)
+	console.log(person1.__proto__) //这个用于指向创建它的构造函数的原型对象
+	console.log(Person.prototype)
+	console.log(person1.__proto__==Person.prototype)//这个用于指向创建它的构造函数的原型对象 所以两个是相等的
+	console.log(person1.__proto__.sayName)
+	console.log(person1.sayName)
+	
+	
+	/**
+	 * 在默认情况下，所有的原型对象都会自动获得一个 constructor（构造函数）属性，这个属性（是一个指针）指向 prototype 属性所在的函数（Person）
+	 * Person.prototype = {
+		   name:  'Zaxlct',
+		   age: 28,
+		   job: 'Software Engineer',
+		   sayName: function() {
+		     alert(this.name);
+		   }
+		}
+	 */
+	/*	
+	 	总结
+	
+	　　__proto__是实现原型链的关键，而prototype则是原型链的组成。
+		我们沿着a的__proto__一直访问会到达Object的prototype，也就是说a调用toString方法最终其实是访问Object.prototype的toString方法。
+		那么a的原型链就是由Number.prototype和Object.prototype组成，
+		当a访问一个方法或属性时，它会先在自身查找，然后再沿原型链找，找到则调用，没找到报错
+	*/
+		
+</script>

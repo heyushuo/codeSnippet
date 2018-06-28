@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+//	想要深入了解 call() 和 apply() 这两个方法，那么必须要先知道他们的基本作用：改变对象的执行上下文(执行环境)即this的指向
+
+console.log(this)
+function test(){
+	console.log(this) //this是window全局对像
+}
+test()
+
+
+var person={
+	name:"heyushuo",
+	age:25,
+	say:function (){
+		console.log(this)
+	}
+}
+person.say()
+//say方法是person对象的一个属性，被person对象调用，所以this的指向也就是person
+/**
+ * call()
+ * function.call(obj[,arg1[, arg2[, [,.argN]]]]])
+ * 
+ * 调用call的对象必须是个函数function
+ * call的第一个参数将会是function改变上下文后指向的对象，如果不传，将会默认是全局对象window
+ * 第二个参数开始可以接收任意个参数，这些参数将会作为function的参数传入function
+ * 调用call的方法会立即执行
+ */
+
+/**
+ * apply()
+ * function.apply(obj[,argArray])
+ * 与call方法的使用基本一致，但是只接收两个参数，其中第二个参数必须是一个数组或者类数组，这也是这两个方法很重要的一个区别
+ */
+//这是一个类数组
+var arrayLike = {
+    0: 'item1',
+    1: 'item2',
+    2: 'item3',
+    length: 3
+}
+//我们经常使用的获取dom节点的方法返回的就是一个类数组，在一个方法中使用 arguments关键字获取到的该方法的所有参数也是一个类数组
+//但是类数组却不能通过forEach进行遍历，因为forEach是数组原型链上的方法，类数组毕竟不是数组，所以无法使用
+
+
+
+/**
+ * call和apply的异同
+ */
+
+function hh(a,b,c){
+	console.log(this) //这个this指向了person
+	console.log(a , b ,c)
+	console.log(arguments)
+}
+hh.call(person,1,2,3)
+
+hh.apply(person,[1,2,3])
+
+
+
+
+//对象继承
+//function superClass () {
+//  this.a = 1;
+//  this.print = function () {
+//  	console.log(this) //这里的this指的是superClass这个对象
+//      console.log(this.a);
+//  }
+//  console.log(this)
+//}
+//
+//var superClass=new superClass();
+//superClass.print()
+
+
+function superClass () {
+    this.a = 1;
+    this.print = function () {
+        console.log(this.a);
+    }
+}
+
+function subClass () {
+	console.log(this)
+    superClass.call(this);
+    this.print();
+}
+
+subClass();
+// 1
+
+
+//使用例子
+    function add(c,d){
+        return this.a + this.b + c + d;
+    }
+
+    var s = {a:1, b:2};
+    console.log(add.call(s,3,4)); // 1+2+3+4 = 10
+    console.log(add.apply(s,[5,6])); // 1+2+5+6 = 14 
+
+</script>

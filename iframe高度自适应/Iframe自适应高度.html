@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			iframe{
+				border: none;
+			}
+		</style>
+	</head>
+	<body>
+		<iframe src="iframe.html" onload="setHeight(this)"></iframe>
+	</body>
+</html>
+<!---->
+<script type="text/javascript">
+	function setHeight(obj){
+		console.log(obj)
+	     obj.style.height = obj.contentWindow.document.body.offsetHeight +'px';
+	};
+	
+	
+	
+	//可用的高度自适应
+	
+	function setIframeHeight(iframe) {
+		if (iframe) {
+			var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+			if (iframeWin.document.body) {
+			iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+			}
+		}
+	};
+
+window.onload=function(){
+	setIframeHeight(document.getElementById("iframe"))
+}
+
+</script>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="a">
+			-webkit-tap-highlight-color:rgba(0,0,0,0)
+			的含义就是颜色是黑色，透明度是0，看不到了。所以点击就没有效果了。
+		</div>
+	</body>
+</html>
+-webkit-tap-highlight-color是啥东东？
+概述：
+
+-webkit-tap-highlight-color 是一个 不规范的属性（unsupported WebKit property），
+它没有出现在 CSS 规范草案中。
+
+当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时，
+覆盖显示的高亮颜色。该属性可以只设置透明度。如果未设置透明度，
+iOS Safari使用默认的透明度。当透明度设为0，则会禁用此属性；
+当透明度设为1，元素在点击时不可见。

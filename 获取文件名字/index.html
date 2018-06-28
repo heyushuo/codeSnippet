@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="file" name="" id="newsearchBtn" value="" />
+	</body>
+</html>
+<script src="../js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	function getFileName(obj){  
+        var fileName="";  
+          
+        if(typeof(fileName) != "undefined")  
+        {  
+            fileName = $(obj).val().split("\\").pop();  
+            //fileName=fileName.substring(0, fileName.lastIndexOf("."));  
+        }  
+        return fileName;  
+ 	}
+	$("#newsearchBtn").change(function(){
+		alert(getFileName("#newsearchBtn"));
+		console.log($("#newsearchBtn").val().split("\\"))
+	})
+</script>

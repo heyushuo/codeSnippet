@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>多行省略号</title>
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+			.p1 {
+				width: 200px;
+				border: 1px solid black;
+				overflow : hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp:2;
+				-webkit-box-orient: vertical;
+			}
+			span{
+				/*隐藏超出部分文字*/
+				overflow: hidden; 
+				/*多出文字后添加省略号*/
+				text-overflow: ellipsis;
+				/*强制不换行*/
+				white-space: nowrap;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="clear: both;">
+			<p class="p1" style="float: left;" >sdjfksdjf肯德基饭卡上机房
+			的垃圾是登陆阿萨德就拉上啊啊的时刻就发生纠
+			纷的拉开就发了就爱上的浪费就暗恋谁发的阿里山的房间里傲娇受得了
+			都是假设劳动节垃圾地方老师叫对方垃
+			多浪费家里附近阿萨德</p>
+			<span style="float: left;">2016年10月三号</span>
+			
+			<input type="text" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>4?this.value.length:4);"> 
+		</div>
+	</body>
+</html>

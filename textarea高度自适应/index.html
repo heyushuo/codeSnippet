@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Document</title>
+	<style>
+		textarea{
+			resize: none;
+			padding: 3px;
+		}
+	</style>
+</head>
+<body>
+	<textarea data-adaptheight="" rows="3" cols="40" placeholder="Your input"></textarea>
+	<script>
+		function adjustHeight(textareaElement, minHeight) {
+			// 计算因边框和轮廓产生的高度差异
+	        var outerHeight = parseInt(window.getComputedStyle(el).height, 10);
+	        var diff = outerHeight - el.clientHeight;
+	        // 设置高度为0以防需要收缩（高度）
+	        el.style.height = 0;
+	        // el.scrollHeight 是文本内容的全部高度，而不仅仅是可见部分的。
+	        el.style.height = Math.max(minHeight, el.scrollHeight + diff) + 'px';
+		}
+	    // 我们使用"data-adaptheight"属性作为一个标记
+	    var textAreas = document.querySelectorAll('textarea[data-adaptheight]');
+
+	    // 迭代本页所有的文本域
+	    for (var i = 0, l = textAreas.length; i < l; i++) {
+	        var el = textAreas[i];
+	        // 如果文本域有边距，我们需要设置box-sizing: border-box
+	        el.style.boxSizing = el.style.mozBoxSizing = 'border-box';
+	        // 不需要滚动条
+	        el.style.overflowY = 'hidden';
+	        // 通过"rows"属性初始化的最小高度
+	        var minHeight = el.scrollHeight;
+
+	        el.addEventListener('input', function() {
+	            adjustHeight(el, minHeight);
+	        });
+
+	        // 当窗口大小改变时，我们需要重新调整高度（例如方向变化）
+	        window.addEventListener('resize', function() {
+	            adjustHeight(el, minHeight);
+	        });
+
+	        // 我们调整初始内容的高度
+	        adjustHeight(el, minHeight);
+	    }
+	</script>
+</body>
+</html>

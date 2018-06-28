@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li><a href="https://www.cnblogs.com/humin/p/4556820.html" target="_blank">js继承大全</a></li>
+			<li><a href="https://segmentfault.com/q/1010000005721719" target="_blank">call(this)</a></li>
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	/**
+	 * 
+	 * 1.原型链法
+	 * 
+	 */
+	function Animal() {
+		this.name = 'animal';
+	}
+	Animal.prototype.sayName = function(){
+		console.log(this.name);
+	};
+	
+	function Person(){
+		this.name="heyushuo"
+	}
+	console.log(new Animal())
+	Person.prototype=new Animal();
+	console.log(Person.prototype)
+	Person.prototype.constructor='Person'
+	var a=new Person()
+	console.log(a.sayName())
+	
+	/**
+	 * 
+	 * 2.构造器继承
+	 * 
+	 */
+	/*function Animal() {
+		this.name = 'animal';
+		this.sayName = function() {
+		console.log(this.name);
+	};
+	}
+
+	function Person() {
+		Animal.call(this); // apply, call, bind方法都可以．细微区别，后面会提到．
+		//这种继承只是继承了属性上的没有继承原型链上的
+	}
+	
+	var b=new Person()*/
+</script>

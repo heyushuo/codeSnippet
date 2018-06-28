@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	HTML5 过渡:
+
+过渡:给改变添加过程;
+
+要实现这一点就必须规定两项条件:
+
+1.规定要将效果添加到那个css的属性上(那个属性需要进行改变);
+
+2.规定效果的时长;
+
+3.transition:属性 时长(要将多个属性进行过渡设置,中间以逗号进行区分,如果要是将整体属性全部变化可以省略属性而直接设置时间就好了);
+
+ 
+
+CSS过渡属性:
+
+1.transition-property:指定过渡或动态模拟的css属性;
+
+1.1 none:没有指定任何样式;
+
+1.2 all:给所有样式进行更改(通常我们不写就是默认);
+
+1.3 transition:属性 时长(要将多个属性进行过渡设置,中间以逗号进行区分,如果要是将整体属性全部变化可以省略属性而直接设置时间就好了);
+
+2.transition-duration:指定过渡所需要的时间;
+
+3.transition-timing-function:指定过渡的函数;
+
+3.1 ease:元素样式由初始状态过渡到终止状态时速度由快到慢并逐渐变慢;
+
+3.2 linear:元素样式由初始状态过渡到终止状态时速度恒速;
+
+3.3 ease-in:元素样式由初始状态过渡到终止状态时速度是一种加速运动;
+
+3.4 ease-out:元素样式由初始状态过渡到终止状态时速度是一种减速运动;
+
+3.5 ease-in-out:元素样式由初始状态过渡到终止状态时速度先加速在进行减速;
+
+4.trasnsition-delay:指定过渡所需要的延迟时间;
+
+ 
+
+------------------------------------------------------------------------------------------
+
+ 
+
+HTML5 动画:
+
+CSS动画属性:
+
+1.animation-name:用来指定一个关键帧动画的名称,这个动画名称必须对应一个@keyframe规则,css加载时会应用animation-name指定的动画;
+
+1.1 none:没有指定任何动画,如果有的话可以覆盖掉;
+
+1.2 name:@keyframes 中定义的名称;
+
+2.animation-duration:用来设置播放动画所需要的时间;
+
+3.animation-timing-function:用来设置动画的播放方式;
+
+4.animation-delay:用来设置动画的延时播放时间;
+
+5.animation-iteration-count:用来指定动画播放的循环次数;
+
+ 5.1 N:次数;
+
+ 5.2 infinite:无限制循环播放;
+
+6.animation-direction:用来指定动画的播放方向;
+
+6.1 normal:正常;
+
+6.2 alternate:一次向前,一次向后的交替运行;
+
+7.animation-play-state:用来指定动画的播放状态;
+
+7.1 paused:停止播放的状态(一般需要动态的去设置);
+
+8.animation-fill-mode:用来进行设置动画的时间外属性;
+
+8.1 none:按照预期的开始和结束;
+
+8.2 forwards:表示动画结束后不返回;
+
+8.3 backforwards:表示急速返回;
+
+8.4 both:表示根据情况应用forwards和backforwards的效果(在这种情况的时候要同时设置animation-direction属性和animation-iteration-count属性);
+
+ 
+
+动画的简写形式:
+
+animation: 名称 运动时间 运动函数 运动次数 播放方向 延迟时间 完成之后的表现;
+
+ 
+
+兼容性写法:
+
+-webkit-animation:
+
+@-webkit-keyframes name{}
+</script>

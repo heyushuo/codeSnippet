@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<!--
+	1 、shift():删除数组的第一个元素,返回删除的值。这里是0
+	2 、unshift(3,4):把参数加载数组的前面，返回数组的长度。现在list:中是3,4,0,1,2
+	3、pop():删除数组的最后一个元素，返回删除的值。这里是2.
+	4、push(3):将参数加载到数组的最后，返回数组的长度，现在List中时：0,1,2,3
+	5、concat(3,4):把两个数组拼接起来。
+	6、splice(start,deleteCount,val1,val2,...)：从start位置开始删除deleteCount项，并从该位置起插入val1,val2,...
+	7、reverse：将数组反序
+-->
+<script type="text/javascript">
+	var a = [1,2,3,4,5]; 
+	var b = a.reverse(); //a：[5,4,3,2,1] b：[5,4,3,2,1] 
+	var c=a.unshift(0,10)  //返回数组的长度
+	console.log(a)
+	console.log(c)
+	
+	var a1=[1,2,3];
+	var a2=[4,5,6];
+	var a3=a1.concat(a2)
+	console.log(a3)
+	//splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目。
+	a2.splice(2,0,222);//添加一项
+	a1.splice(1,1)
+	console.log(a1)
+	console.log(a2)
+</script>
+<script type="text/javascript">
+	var arr = new Array(6)
+	arr[0] = "George"
+	arr[1] = "John"
+	arr[2] = "Thomas"
+	arr[3] = "James"
+	arr[4] = "Adrew"
+	arr[5] = "Martin"
+	document.write(arr + "<br />")
+	arr.splice(2,0,"William")
+	document.write(arr + "<br />")
+</script>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	/**
+	 * readyState
+	 * 存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
+			0: 请求未初始化
+			1: 服务器连接已建立
+			2: 请求已接收
+			3: 请求处理中
+			4: 请求已完成，且响应已就绪
+		status	
+			200: "OK"
+			404: 未找到页面
+	 */
+	
+	
+	
+	
+	//第一步：创建异步对象
+	var ajax=new XMLHttpRequest();
+	//步骤二:设置请求的url参数,参数一是请求的类型,参数二是请求的url,可以带参数,动态的传递参数starName到服务端
+	ajax.open('get','url?page=1');
+	
+	
+	/**
+	 * 还可以设置请求头部和类型
+	 */
+	/*
+	ajax.responseType = "json";
+    ajax.setRequestHeader("Accept", "application/json");
+    */
+	
+	
+	
+	//步骤三:发送请求
+	ajax.send();
+	//步骤四：注册事件onreadystatechange 专挑改变就会调用
+	//onreadystatechange
+	//onreadystatechange
+	//xhr.readyState==4&&xhr.status==2000
+	ajax.onreadystatechange=function(){
+		if(ajax.readyState==4&&ajax.status==200){
+			console.log('成功')
+		}else{
+			console.log('失败')
+		}
+	}
+	
+	
+	
+	
+	
+	/**
+	 * 
+	 * 使用Promise来创建原生js发送ajax
+	 * 
+	 */
+	const getJSON = function(url) {
+		const promise = new Promise(function(resolve, reject) {
+			const handler = function() {
+				if(this.readyState !== 4) {
+					return;
+				}
+				if(this.status === 200) {
+					resolve(this.response);
+				} else {
+					reject(new Error(this.statusText));
+				}
+			};
+			const client = new XMLHttpRequest();
+			client.open("GET", url);
+			client.onreadystatechange = handler;
+			client.responseType = "json";
+			client.setRequestHeader("Accept", "application/json");
+			client.send();
+	
+		});
+	
+		return promise;
+};
+
+getJSON("/posts.json").then(function(json) {
+	console.log('Contents: ' + json);
+}, function(error) {
+	console.error('出错了', error);
+});
+
+</script>

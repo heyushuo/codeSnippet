@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<!--学习链接 :http://www.haorooms.com/post/ifame_height_zishiying   -->
+</html>
+<script type="text/javascript">
+	function setIframeHeight(iframe) {
+		if (iframe) {
+			var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+			if (iframeWin.document.body) {
+					iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+				}
+		}
+};
+</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+//	原型模式
+//每一个函数都有一个prototype（原型）属性。这个属性是一个指针，指向一个对象
+//而这个对象的用途是包含可以有特定类型的所有实例共享的属性和方法。
+//prototype是通过调用构造函数而创建的那个对象的原型对象
+//使用原型对象的好处是可以让所有对象实例共享他所包含的属性和方法，不必在构造函数中定义对象实例的信息可以将这些信息直接添加到原型对象中
+
+function Person(name){}
+Person.prototype.name="heyushuo";
+Person.prototype.age=25;
+Person.prototype.sayName=function(){
+	alert(this.name)
+}
+
+var person1=new Person();
+
+var person2=new Person();
+person1.sayName()==person2.sayName() //true
+
+
+
+
+/*function Person() {}
+
+Person.prototype = {
+    constructor: Person,
+    getName: function() {},
+    getAge: function() {},
+    sayHello: function() {}
+}
+
+Person.prototype = {}实际上是重新创建了一个{}对象并赋值给Person.prototype，这里的{}并不是最初的那个原型对象。因此它里面并不包含constructor属性。
+为了保证正确性，我们必须在新创建的{}对象中显示的设置constructor的指向。即上面的constructor: Person。*/
+</script>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			p{
+				height: 30px;
+				line-height: 30px;
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<p class="item">1</p>
+		<p class="item">2</p>
+		<p class="item">3</p>
+		<p class="item">4</p>
+		<p class="item">5</p>
+	</body>
+</html>
+<script type="text/javascript">
+/*
+ * 这个例子是一个比较简单的闭包，解释如下：
+
+		(1)定义了一个普通函数A
+		(2)在A中定义了普通函数B
+		(3)在A中返回B（确切的讲，在A中返回B的引用）
+		(4)执行A(),把A的返回结果赋值给变量 c
+		(5)执行 c()
+		
+		当一个内部函数被其外部函数之外的变量引用时，就形成了一个闭包。
+ */
+	function A(){
+	    function B(){
+	       console.log("Hello haorooms!");
+		    }
+	    return B;
+	}
+	var c = A();
+	c();//Hello haorooms!
+</script>
+<script type="text/javascript">
+	/*
+	 * 闭包的作用
+		在上述例子中，B定义在A中，因此B依赖于A,而外部变量 c 又引用了B, 
+		所以A间接的被 c 引用，也就是说，A不会被回收，会一直保存在内存中。
+		为了证明我们的推理，上面的例子稍作改进。
+	//--------------------------------------------------------
+		count是A中的一个变量，它的值在B中被改变，
+		函数B每执行一次，count的值就在原来的基础上累加1。
+		因此，A中的count一直保存在内存中。
+	//---------------------------------------------------------
+	这就是闭包的作用，有时候我们需要一个模块中定义这样一个变量
+	：希望这个变量一直保存在内存中但又不会“污染”全局的变量，
+	这个时候，我们就可以用闭包来定义这个模块。
+	//---------------------------------------------------------
+* */
+	function A(){
+	    var count = 0;
+	    function B(){
+	       count ++;
+	       console.log(count);
+	    }
+	    return B;
+	}
+	var c = A();
+/*	console.log(c())
+	console.log(c())
+	console.log(c())*/
+	c();// 1
+	c();// 2
+	c();// 3
+	
+	
+	for(var i=0;i<5;i++){
+	/*有时候我们需要一个模块中定义这样一个变量
+	：希望这个变量一直保存在内存中但又不会“污染”全局的变量，
+	这个时候，我们就可以用闭包来定义这个模块。*/
+//	解决办法：使用闭包将变量i的值保护起来。
+//	解决办法：使用闭包将变量i的值保护起来。
+//	解决办法：使用闭包将变量i的值保护起来。
+//	解决办法：使用闭包将变量i的值保护起来。
+//	解决办法：使用闭包将变量i的值保护起来。
+		(function(j){
+				console.log(j)
+		})(i)
+			
+	}
+	
+	
+	//真实例子
+	var op=document.querySelectorAll("p");
+//	如果这样写点击事件后弹出的都是5
+	/*for (var j=0;j<op.length;j++) {
+		op[j].onclick=function(){
+			alert(j)
+		}
+	}*/
+	
+	
+	/**
+	 * 解决办法
+	 */
+	for (var j=0;j<op.length;j++) {
+		(function(j){
+			op[j].onclick=function(){
+				alert(j)
+			}
+		})(j)
+		
+	}
+	
+	
+	function heyushuo(){
+		let a=100
+		
+		return ++a;   //返回101
+		return a++    //返回100
+	}
+	console.log(heyushuo())
+</script>

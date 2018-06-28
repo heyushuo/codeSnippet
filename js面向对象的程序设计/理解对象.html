@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>理解对象</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	
+	//最基本的创建对象的方式，创建一个Object的实例，然后在再为它添加属性和方法
+	var person=new Object();
+	person.name='heyushuo';
+	person.age='25';
+	person.sayName=function(){
+		console.log(this.name)
+	}
+	person.sayName();
+	//早期的javascript开发人员都是使用上边的模式创建对象，几年后，对象字面量成为创建这种对象的首先模式
+	//对象字面量语法可以写成如下
+	
+	var person={
+		name:"heyushuo",
+		age:"25",
+		sayAge:function(){
+			console.log(this.age)
+		}
+	}
+	person.sayAge()
+	person.age="00"
+	console.log(person.age)
+//	property （属性）
+
+/**
+ * 构造函数
+ * @param {Object} name
+ */
+function Person(name) {
+    this.name = name;
+}
+// 定义Person的原型，原型中的属性可以被自定义对象引用
+/**
+ * 原型中的属性可以被自定义对象引用
+ * 
+ * 原型中的属性可以被自定义对象引用
+ * 
+ * 原型中的属性可以被自定义对象引用
+ */
+Person.prototype = {
+    getName: function() {
+        return this.name;
+    }
+}
+var hao= new Person("haorooms");
+console.log(hao.getName());   // "haorooms"
+
+/**
+ * constructor
+ * constructor始终指向创建当前对象的构造函数
+ * 
+ */
+
+
+
+
+//__proto__是每个对象都有的一个属性，而prototype是函数才会有的属性!!! 
+
+function F() {
+// some code
+}
+//创建这个函数的时候avaScript 内部会执行如下几个动作：
+//1.为该函数添加一个原形（即 prototype）属性 prototype又是一个对象
+//2. 为 prototype 对象额外添加一个 constructor 属性，并且该属性保存指向函数F 的一个引用
+</script>

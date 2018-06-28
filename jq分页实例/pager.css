@@ -1,0 +1,10 @@
+.pager-box:after{display:block;height:0;visibility:hidden;clear:both;content:'';}
+.pager{float:left;position:relative;left:50%;font-family:微软雅黑;}
+.pager a,.pager span{
+    position:relative;left:-50%;display:block;float:left;margin-left:5px;border:1px solid #b6bcc1;padding: 5px 10px;
+    text-decoration:none;border-radius:3px;
+}
+.pager span{border:0;}
+.pager a.js-selected{background:#2196f3;color:#fff;cursor:default;}
+.pager a.js-disabled{background:darkgray;border-color:#f1f1f1;cursor:default;color:#fff;}
+.pager span.zdot{color:#b6bcc1;text-align: center;}

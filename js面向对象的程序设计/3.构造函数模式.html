@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<!--constructor始终指向创建当前对象的构造函数-->
+<!--constructor始终指向创建当前对象的构造函数-->
+<!--constructor始终指向创建当前对象的构造函数-->
+<script type="text/javascript">
+	//	构造函数类型，解决了工厂模式的不知道对象类型的弊端，     可以创建特定类型的对象
+
+//像Object和Array这样的原生构造函数，在运行时会自动出现在执行环境中，此外也可以创建自定义的构造函数，从而定义自定义队形类型的属性和方法。
+
+//构造函数始终都应该以一个大写字母开头而非构造函数应该以一个小写字母开头。。。。。。。
+	function Person(name,age){
+		this.name=name;
+		this.age=age;
+		this.sayName=function(){
+			alert(this.name);
+		}
+	}
+	var person1=new Person("heyushuo","26");
+	var person2=new Person("youguoen","28");
+//要创建Person的新实例。必须使用new 操作符，以这种方式调用构造函数实际会经历一下操作
+//1.创建一个新对象
+//2.将构造函数的作用域给新的对象（因此this就指向这个新的对象了）
+//3.执行构造函数中的代码（为这个新对象添加属性）
+
+//person1 和 person2分别保存着person的一个不同实例,这两个对象都有一个constructor(构造函数)属性,该属性指向Person,
+console.log(person1.constructor==Person) //true
+console.log(person2.constructor==Person) //true
+//对象的constructor属性最初是用来表示对象类型的，但是，提到检测对象类型，还是instanceof操作符更可靠一些，
+//我们这个例子的所有对象既是Object的实例，同时也是Person的实例
+console.log(person1 instanceof Object)//true
+console.log(person1 instanceof Person)//true
+console.log(person2 instanceof Object)//true
+console.log(person2 instanceof Person)//true
+
+
+
+//1.构造函数使用方法
+var person1=new Person("heyushuo","26");
+//2.正常函数调用
+Person("heyushuo","26");
+window.sayName()
+//3.在另外一个对象的作用域中调用
+var o=new Object();
+Person.call(0,"heyishuo","26")
+o.sayName();
+
+//构造函数的问题person1和person2都有一个名字为sayName方法，但是两个方法的实例不同
+//弊端，两个完全相同的任务的fuction实例创建两次解决办法
+	function Person(name,age){
+		this.name=name;
+		this.age=age;
+		this.sayName=sayName;
+	}
+	function sayName(){
+			alert(this.name);
+		}
+	var person1=new Person("heyushuo","26");
+	
+	//因此person1和person2
+</script>

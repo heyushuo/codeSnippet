@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>原型链复习</title>
+	</head>
+	<body>
+	</body>
+</html>
+<!--
+	prototype本质上还是一个JavaScript对象。
+	并且每个函数都有一个默认的prototype属性。 如果这个函数被用在创建自定义对象的场景中，我们称这个函数为构造函数。 
+-->
+	<script type="text/javascript">
+	//构造函数
+		function Person(name){
+			this.name=name;
+		}
+		//定义Person的原型.原型中的属性可以被自定义对象引用
+		Person.prototype={
+			getName:function(){
+				return this.name;
+			}
+		}
+		var hao=new Person("haorooms");
+		console.log(hao.getName());  // "haorooms"
+	</script>
+<!--
+	
+	作为类比，我们考虑下JavaScript中的数据类型 - 字符串（String）、
+	数字（Number）、数组（Array）、对象（Object）、日期（Date）等。
+
+          我们有理由相信，在JavaScript内部这些类型都是作为构造函数来实现的，比如：
+	
+-->
+<script type="text/javascript">
+	// 定义数组的构造函数，作为JavaScript的一种预定义类型
+        function Array() {
+            // ...
+        }
+
+        // 初始化数组的实例
+        var arr1 = new Array(1, 56, 34, 12);
+        // 但是，我们更倾向于如下的语法定义：
+        var arr2 = [1, 56, 34, 12];
+      
+      
+//    同时对数组操作的很多方法（比如concat、join、push）应该也是在prototype属性中定义的。
+//    实际上，JavaScript所有的固有数据类型都具有只读的prototype属性 
+//    （这是可以理解的：因为如果修改了这些类型的prototype属性，
+//    则哪些预定义的方法就消失了）， 但是我们可以向其中添加自己的扩展方法。
+      
+   //向javascript固有类型Array扩展一个获取最小值得方法
+   Array.prototype.min=function(){
+   	var min=this[0];
+   	for(var i=1;i<this.length;i++){
+   		if (this[i]<min) {
+   			min=this[i]
+   		}
+   	}
+   	return min;
+   }
+      
+</script>

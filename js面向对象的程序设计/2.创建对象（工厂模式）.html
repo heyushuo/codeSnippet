@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+//	这种工厂模式可以无数次的调用这个函数,每次都会返回这个对象,解决的创建多个相似对象的问题,但却没有解决对象识别的问题(即怎么知道一个对象的类型)
+	function creatPerson(name,age){
+		var o=new Object();
+		o.name=name;
+		o.age=age;
+		o.sayName=function(){
+			console.log(this)//是这个实力对象
+			alert(this.name);
+		}
+		
+		return o;
+	}
+	
+	var person1=creatPerson("heyushuo","26");
+	var person2=creatPerson("youguoen","28");
+	console.log(person1)
+	console.log(person2)
+	person1.sayName()
+
+
+</script>

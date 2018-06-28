@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		输入:<input type="text" name="test1" id="test1" value="" />
+		<br />
+		输出:<input type="text" name="test1" id="test2" value="" />
+	</body>
+</html>
+<script src="../jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var a={};
+	var arr={};
+	Object.defineProperty(a,'b',{
+		set:function(val){
+			val2.val(val) 
+		}
+//		get:function(){
+//			return arr['b']
+//		}
+	})
+	
+	var val1=$("#test1")
+	var val2=$("#test2");
+	val1.keyup(function(){
+		a.b=val1.val(); //这边调用set方法
+	})
+</script>

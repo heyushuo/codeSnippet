@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<!--    constructor始终指向创建当前对象的构造函数      -->
+	<script type="text/javascript">
+		// 等价于 var foo = new Array(1, 56, 34, 12);
+        var arr = [1, 56, 34, 12];
+        console.log(arr.constructor === Array); // true
+        // 等价于 var foo = new Function();
+        var Foo = function() { };
+        console.log(Foo.constructor === Function); // true
+        // 由构造函数实例化一个obj对象
+        var obj = new Foo();
+        console.log(obj.constructor === Foo); // true
+
+        // 将上面两段代码合起来，就得到下面的结论
+        console.log(obj.constructor.constructor === Function); // true
+	</script>
+	<!--
+		但是当constructor遇到prototype时，
+		有趣的事情就发生了。 我们知道每个函数都有一个默认的属性prototype，
+		而这个prototype的constructor默认指向这个函数。
+	-->

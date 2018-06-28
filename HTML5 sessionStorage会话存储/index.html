@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>storage</title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//采用setItem()方法存储
+	sessionStorage.setItem('testKey','这是一个测试的value值'); // 存入一个值
+	//通过属性方式存储　　
+	sessionStorage['testKey'] = '这是一个测试的value值';
+	sessionStorage.getItem('testKey'); // => 返回testKey对应的值
+/**
+ * sessionStorage也可存储Json对象：
+ * 存储时，通过JSON.stringify()将对象转换为文本格式；
+ * 读取时，通过JSON.parse()将文本转换回对象。
+ */
+	
+	var userEntity = {
+	    name: 'tom',
+	    age: 22
+	};
+	 
+	// 存储值：将对象转换为Json字符串
+	sessionStorage.setItem('user', JSON.stringify(userEntity));
+	 console.log(JSON.stringify(userEntity))
+	// 取值时：把获取到的Json字符串转换回对象
+	var userJsonStr = sessionStorage.getItem('user');
+	userEntity = JSON.parse(userJsonStr);
+	console.log(userJsonStr.name)//这个不是json对象,无法获取到的
+	console.log(JSON.parse(userJsonStr))
+	//console.log(userEntity.name); // => tom
+	
+	sessionStorage.setItem("account",JSON.stringify(userEntity));
+	console.log(JSON.parse(sessionStorage.getItem("account")))
+	console.log(sessionStorage.getItem("account").name)
+</script>

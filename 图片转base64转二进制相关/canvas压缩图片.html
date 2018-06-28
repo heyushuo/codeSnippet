@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+		<img id="preview" src="">
+		<img id="source" src="">
+	</body>
+</html>
+<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var canvas = document.getElementById('canvas');
+	var source = document.getElementById('source');
+	var preview = document.getElementById('preview');
+	source.src="img/aa.jpg";
+	source.onload = function() {
+	    var width = source.width;
+	    var height = source.height;
+	    var context = canvas.getContext('2d');
+	
+	    // draw image params
+	    var dx = 0;
+	    var dy = 0;
+	    var quality = 0.5;
+	
+	    canvas.width = width;
+	    canvas.height = height;
+	
+	    context.drawImage(source, dx,dy);
+	
+	    var dataUrl = canvas.toDataURL('image/jpeg', quality);
+	    preview.src = dataUrl;
+	    console.log(dataUrl.length)
+	};
+</script>

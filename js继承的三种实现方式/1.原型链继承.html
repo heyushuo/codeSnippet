@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li><a href="https://www.cnblogs.com/humin/p/4556820.html">JS实现继承的几种方式</a></li>
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	
+	// 定义一个动物类
+	function Animal (name) {
+	  // 属性
+	  this.name = name || 'Animal';
+	  // 实例方法
+	  this.sleep = function(){
+	    console.log(this.name + '正在睡觉！');
+	  }
+	}
+	// 原型方法
+	Animal.prototype.eat = function(food) {
+	  console.log(this.name + '正在吃：' + food);
+	};
+	/**
+	 * 
+	 * 原型链继承
+	 * 核心： 将父类的实例作为子类的原型
+	 */
+	function Cat(){ 
+	}
+	console.log(new Animal())
+	Cat.prototype = new Animal();
+	Cat.prototype.constructor = Cat;
+	Cat.prototype.name = 'cat';
+	
+	//　Test Code
+	var cat = new Cat();
+	console.log(cat.name);        //cat
+	cat.eat('fish'); //cat正在吃:fish
+	cat.sleep();     //cat正在睡觉
+	console.log(cat instanceof Animal); //true 
+	console.log(cat instanceof Cat); //true
+	
+	
+//	instanceof 运算符用来检测 constructor.prototype 是否存在于参数 object 的原型链上。
+//
+
+//缺点
+//来自原型对象的引用属性是所有实例共享的（详细请看附录代码： 示例1）
+//创建子类实例时，无法向父类构造函数传参
+</script>
