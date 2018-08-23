@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	 var clientHeight = document.body.clientHeight;
+      var focusElem = null; //输入框的焦点
+      //利用捕获事件来监听输入框等的focus
+      document.body.addEventListener(
+        "focus",
+        function(e) {
+          focusElem = e.target || e.srcElement;
+          console.log(focusElem);
+        },
+        true
+      );
+      //因存在软键盘显示而屏幕大小还没改变，所以以屏幕大小改变为准
+      window.addEventListener("resize", function() {
+        if (focusElem && document.body.clientHeight < clientHeight) {
+          //焦点元素滚动到可视范围底部（false为底部）
+          focusElem.scrollIntoView(false);
+        }
+      });
+</script>
